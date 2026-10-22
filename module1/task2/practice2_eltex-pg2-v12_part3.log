@@ -1,0 +1,212 @@
+root@eltex-practice2-pg2-v12:~# git config --global user.name sinnum
+root@eltex-practice2-pg2-v12:~# git config --global user.email paluhinartem777@gmail.com
+root@eltex-practice2-pg2-v12:~# git config --global init.defaultBranch main
+
+root@eltex-practice2-pg2-v12:~# apt update
+Hit:1 http://ru.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:4 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [46.4 kB]
+Get:6 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.2 kB]
+Fetched 249 kB in 2s (104 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+94 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@eltex-practice2-pg2-v12:~# apt install git gh
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+git is already the newest version (1:2.43.0-1ubuntu7.4).
+git set to manually installed.
+The following NEW packages will be installed:
+  gh
+0 upgraded, 1 newly installed, 0 to remove and 94 not upgraded.
+Need to get 8,836 kB of archives.
+After this operation, 45.4 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://ru.archive.ubuntu.com/ubuntu noble-updates/universe amd64 gh amd64 2.45.0-1ubuntu0.3 [8,836 kB]
+Fetched 8,836 kB in 1s (11.6 MB/s)
+Selecting previously unselected package gh.
+(Reading database ... 125727 files and directories currently installed.)
+Preparing to unpack .../gh_2.45.0-1ubuntu0.3_amd64.deb ...
+Unpacking gh (2.45.0-1ubuntu0.3) ...
+Setting up gh (2.45.0-1ubuntu0.3) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart systemd-logind.service
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+
+Your identification has been saved in /root/.ssh/sinnum
+Your public key has been saved in /root/.ssh/sinnum.pub
+The key fingerprint is:
+SHA256:oXSZnbwAioOZD/wbeTyef7IHO75w6wG+nN5FXMbllPs root@eltex-practice2-pg2-v12
+The key's randomart image is:
++--[ED25519 256]--+
+|      .      o.  |
+|.+ . . . =..+.   |
+|=.o . . * ++ ..  |
+| o..o. o.oo. .   |
+|  .+ =. So.   .  |
+|    * +..      E |
+|   . = oo.       |
+|    . B++o       |
+|    .=oOB        |
++----[SHA256]-----+
+
+root@eltex-practice2-pg2-v12:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? SSH
+? Upload your SSH public key to your GitHub account? /root/.ssh/sinnum.pub
+? Title for your SSH key: eltex-practice2-pg2-v12
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: E8F3-790E
+Press Enter to open github.com in your browser...
+! Failed opening a web browser at https://github.com/login/device
+  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
+  Please try entering the URL in your browser manually
+
+✓ Authentication complete.
+- gh config set -h github.com git_protocol ssh
+✓ Configured git protocol
+! Authentication credentials saved in plain text
+✓ Uploaded the SSH key to your GitHub account: /root/.ssh/sinnum.pub
+✓ Logged in as sinnum
+
+root@eltex-practice2-pg2-v12:~# gh auth setup-git --hostname github.com
+
+root@eltex-practice2-pg2-v12:~# gh auth status
+github.com
+  ✓ Logged in to github.com account sinnum (/root/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: ssh
+  - Token: gho_************************************
+  - Token scopes: 'admin:public_key', 'gist', 'read:org', 'repo'
+
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1# scp eltex-pg2-v12@172.16.8.4:/home/eltex-pg2-v12/report_part1.txt task1/
+eltex-pg2-v12@172.16.8.4's password:
+report_part1.txt                                                                   100%  124   241.1KB/s   00:00
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1# scp eltex-pg2-v12@172.16.8.4:/home/eltex-pg2-v12/*.log task1/
+eltex-pg2-v12@172.16.8.4's password:
+eltex-pg2-v12_part.log                                                             100% 7537     8.2MB/s   00:00
+eltex-pg2-v12_part3.log                                                            100% 4055     6.7MB/s   00:00
+eltex-pg2-v12_part3_gt20M.log                                                      100% 1129     2.0MB/s   00:00
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1# cd task1
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1/task1# ls
+eltex-pg2-v12_part3_gt20M.log  eltex-pg2-v12_part3.log  eltex-pg2-v12_part.log  report_part1.txt
+
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026# git add .
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026# dit status
+Command 'dit' not found, but there are 22 similar ones.
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   module1/task1/eltex-pg2-v12_part.log
+        new file:   module1/task1/eltex-pg2-v12_part3.log
+        new file:   module1/task1/eltex-pg2-v12_part3_gt20M.log
+        new file:   module1/task1/report_part1.txt
+
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026# git commit -m "module1 task1 logs"
+[main c895ddf] module1 task1 logs
+ 4 files changed, 353 insertions(+)
+ create mode 100644 module1/task1/eltex-pg2-v12_part.log
+ create mode 100644 module1/task1/eltex-pg2-v12_part3.log
+ create mode 100644 module1/task1/eltex-pg2-v12_part3_gt20M.log
+ create mode 100644 module1/task1/report_part1.txt
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026# git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (8/8), 4.25 KiB | 4.25 MiB/s, done.
+Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/sinnum/eltex-autumn-2026.git
+   e03e57c..c895ddf  main -> main
+ root@eltex-practice2-pg2-v12:~# mkdir eltex-autumn-2026_clone && cd eltex-autumn-2026_clone
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git clone https://github.com/sinnum/eltex-autumn-2026.git .  Cloning into '.'...
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 11 (delta 0), reused 11 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (11/11), 4.45 KiB | 4.46 MiB/s, done.
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# ls
+module1  README.md
+
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# echo "new test row" >> README.md
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git add README.md
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git commit -m "README upd"
+[main e53e084] README upd
+ 1 file changed, 1 insertion(+)
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 329 bytes | 329.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/sinnum/eltex-autumn-2026.git
+   c895ddf..e53e084  main -> main
+
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git fetch
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git log origin/main
+commit e53e084a8c30d98086ce70955515728530ef0de4 (HEAD -> main, origin/main, origin/HEAD)
+Author: sinnum <paluhinartem777@gmail.com>
+Date:   Thu Oct 22 16:53:48 2026 +0000
+
+    README upd
+
+commit c895ddf44db19b74b56524d25ca4ba04ede0fa58
+Author: sinnum <paluhinartem777@gmail.com>
+Date:   Thu Oct 22 16:43:55 2026 +0000
+
+    module1 task1 logs
+
+commit e03e57ccf46b93ee8499d28bd17830881de46741
+Author: sinnum <paluhinartem777@gmail.com>
+Date:   Thu Oct 22 08:23:52 2026 +0000
+
+    first commit
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git diff main origin/main
+
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026_clone# git merge
+Already up to date.
+
+root@eltex-practice2-pg2-v12:~# cp -r etc_backup* practice2_*.log ~/eltex-autumn-2026/module1/task2/
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1/task2# git add .
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1/task2# git pull origin main --no-rebase
+From https://github.com/sinnum/eltex-autumn-2026
+ * branch            main       -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+root@eltex-practice2-pg2-v12:~/eltex-autumn-2026/module1/task2# git push
+Enumerating objects: 1504, done.
+Counting objects: 100% (1503/1503), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (1053/1053), done.
+Writing objects: 100% (1500/1500), 2.19 MiB | 2.27 MiB/s, done.
+Total 1500 (delta 167), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (167/167), done.
+To https://github.com/sinnum/eltex-autumn-2026.git
+   e53e084..c087cbc  main -> main
+
