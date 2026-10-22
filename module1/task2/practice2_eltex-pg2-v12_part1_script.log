@@ -1,0 +1,838 @@
+server 1:
+
+eltex-pg2-v12@eltex-2026-autumn:~$ ssh-keygen -t ed25519 -C "practice2-key"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/eltex-pg2-v12/.ssh/id_ed25519):
+Created directory '/home/eltex-pg2-v12/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/eltex-pg2-v12/.ssh/id_ed25519
+Your public key has been saved in /home/eltex-pg2-v12/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:W1/COE3ML6tNeiXCqS2/aBXm2kaXbA00xg3YZ+7xe9g practice2-key
+The key's randomart image is:
++--[ED25519 256]--+
+|           +.o   |
+|          .o* +  |
+|           o+=   |
+|          o=..o  |
+|        S+++==oo |
+|         oBo*=+ .|
+|        .B ++o o.|
+|        =.+=. ..E|
+|       ..+=o.   .|
++----[SHA256]-----+
+eltex-pg2-v12@eltex-2026-autumn:~$ ssh-copy-id root@172.16.9.212
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/eltex-pg2-v12/.ssh/id_ed25519.pub"
+The authenticity of host '172.16.9.212 (172.16.9.212)' can't be established.
+ED25519 key fingerprint is SHA256:YNVzj+RtetZfXv5XUn/CUjeEcaMD4eg3jy8EuGGIS+o.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.16.9.212's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.16.9.212'"
+and check to make sure that only the key(s) you wanted were added.
+
+eltex-pg2-v12@eltex-2026-autumn:~$ ssh root@172.16.9.212
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-147-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Oct 19 09:36:44 AM UTC 2026
+
+  System load:  0.05               Processes:              110
+  Usage of /:   41.4% of 14.66GB   Users logged in:        0
+  Memory usage: 5%                 IPv4 address for ens18: 172.16.9.212
+  Swap usage:   0%
+
+ * Canonical Workshop gives developers fast, composable, reproducible, and
+   secure developer environments that are perfect for agentic workflows.
+
+   https://ubuntu.com/workshop
+
+Expanded Security Maintenance for Applications is not enabled.
+
+108 updates can be applied immediately.
+1 of these updates is a standard security update.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+eltex-pg2-v12@eltex-2026-autumn:~$ cat ~/.ssh/*.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO1GT6+cvpkCyobIZ+K2A1fTuQXFI0fd4qR6hVnYzufB practice2-key
+eltex-pg2-v12@eltex-2026-autumn:~$ ls -ld ~/.ssh
+drwx------ 2 eltex-pg2-v12 eltex-pg2-v12 4096 Oct 19 16:36 /home/eltex-pg2-v12/.ssh
+eltex-pg2-v12@eltex-2026-autumn:~$ ls -l ~/.ssh/*.pub
+-rw-r--r-- 1 eltex-pg2-v12 eltex-pg2-v12 95 Oct 19 16:34 /home/eltex-pg2-v12/.ssh/id_ed25519.pub
+
+server2:
+Script started on 2026-10-19 09:46:51+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+root@eltex-practice2-pg2-v12:~# cat ~/.ssh/authorized_keyscat ~/.ssh/authorized_keys
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO1GT6+cvpkCyobIZ+K2A1fTuQXFI0fd4qR6hVnYzufB practice2-key
+root@eltex-practice2-pg2-v12:~# ls -ld ~/.sshls -ld ~/.ssh
+drwx------ 2 root root 4096 Mar 12  2025 /root/.ssh
+root@eltex-practice2-pg2-v12:~# ls -l ~/.ssh/authorized_keysls -l ~/.ssh/authorized_keys
+-rw------- 1 root root 95 Oct 19 09:36 /root/.ssh/authorized_keys
+root@eltex-practice2-pg2-v12:~# гыуuseraadd -m -s /bin/bash user1
+root@eltex-practice2-pg2-v12:~# passwd user1
+New password: 
+Retype new password: 
+passwd: password updated successfully
+root@eltex-practice2-pg2-v12:~# adduser user2
+info: Adding user `user2' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user2' (1002) ...
+info: Adding new user `user2' (1002) with group `user2 (1002)' ...
+info: Creating home directory `/home/user2' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user2
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] 
+info: Adding new user `user2' to supplemental / extra groups `users' ...
+info: Adding user `user2' to group `users' ...
+root@eltex-practice2-pg2-v12:~# adduser user23
+info: Adding user `user3' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user3' (1003) ...
+info: Adding new user `user3' (1003) with group `user3 (1003)' ...
+info: Creating home directory `/home/user3' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user3
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] 
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+info: Adding user `user3' to group `users' ...
+root@eltex-practice2-pg2-v12:~# usermod -s /usr/sbin/nologin user3
+root@eltex-practice2-pg2-v12:~# su - user3
+This account is currently not available.
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3
+user3@eltex-practice2-pg2-v12:/root$ logout
+bash: logout: not login shell: use `exit'
+user3@eltex-practice2-pg2-v12:/root$ exit
+exit
+root@eltex-practice2-pg2-v12:~# groupadd group1123
+root@eltex-practice2-pg2-v12:~# usermod -aG group123 user1
+root@eltex-practice2-pg2-v12:~# usermod -aG group123 user12groupadd group123usermod -aG group123 user2
+root@eltex-practice2-pg2-v12:~# usermod -aG group123 user23
+root@eltex-practice2-pg2-v12:~# groups user1 iser2 osuser2 user3
+user1 : user1 group123
+user2 : user2 users group123
+user3 : user3 users group123
+root@eltex-practice2-pg2-v12:~# ьлвшкmkdir -p /opt/share
+root@eltex-practice2-pg2-v12:~# chown :group123 /opt/share
+root@eltex-practice2-pg2-v12:~# chmod 2770 /opt/share
+root@eltex-practice2-pg2-v12:~# ls -lsd /opt/share
+drwxrws--- 2 root group123 4096 Oct 19 10:00 /opt/share
+root@eltex-practice2-pg2-v12:~# echo "umask 0004" >> /home/user1/.bashrcecho "umask 0004" >> /home/user1/.bashrc
+root@eltex-practice2-pg2-v12:~# su - user1 -c "touch /opt/share/file1.txt"su - user1 -c "touch /opt/share/file1.txt"
+root@eltex-practice2-pg2-v12:~# su - user2 -c "touch /opt/share/file2.txt"su - user2 -c "touch /opt/share/file2.txt"
+root@eltex-practice2-pg2-v12:~# su - user3 -c "touch /opt/share/file3.txt"su - user3 -c "touch /opt/share/file3.txt"
+This account is currently not available.
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3 -c "touch /opt/share/file3.txt"root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3 -c "touch /opt/share/file3.txt"
+root@eltex-practice2-pg2-v12:~# ls -l /opt/sharels -l /opt/share
+total 0
+-rw-rw-r-- 1 user1 group123 0 Oct 19 10:08 file1.txt
+-rw-rw-r-- 1 user2 group123 0 Oct 19 10:08 file2.txt
+-rw-rw-r-- 1 user3 group123 0 Oct 19 10:09 file3.txt
+root@eltex-practice2-pg2-v12:~# rm /opt/share/file1.txtrm /opt/share/file1.txt
+root@eltex-practice2-pg2-v12:~# rm /opt/share/file1.txt.txt2.txt
+root@eltex-practice2-pg2-v12:~# \rm /opt/share/file2.txt.txt3.txt
+root@eltex-practice2-pg2-v12:~# выsu - user1
+user1@eltex-practice2-pg2-v12:~$ umask
+0004
+user1@eltex-practice2-pg2-v12:~$ touch /opt/share/file1.txttouch /opt/share/file1.txt
+user1@eltex-practice2-pg2-v12:~$ exit
+logout
+root@eltex-practice2-pg2-v12:~# ls -l /opt/share/file1.txtls -l /opt/share/file1.txt
+-rw-rw--w- 1 user1 group123 0 Oct 19 10:11 /opt/share/file1.txt
+root@eltex-practice2-pg2-v12:~# ls -l /opt/share/file1.txtsu - user1rm /opt/share/file3.txt2.txt1.txtls -l /opt/sharesu -s /bin/bash user3 -c "touch /opt/share/file3.txt"root@eltex-practice2-pg2-v12:~#  user3 -c "touch /opt/share/file3.txt"
+2 -c "touch /opt/share/file2.txt"
+root@eltex-practice2-pg2-v12:~# su - user2 -c "touch /opt/share/file2.txt"ls -l /opt/share/file1.txtsu - user1rm /opt/share/file3.txt2.txt1.txtls -l /opt/sharesu -s /bin/bash user3 -c "touch /opt/share/file3.txt"
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3 -c "touch /opt/share/file3.txt"root@eltex-practice2-pg2-v12:~#  user2 -c "touch /opt/share/file2.txt"
+ls -l /opt/share/file1.txt
+-rw-rw--w- 1 user1 group123 0 Oct 19 10:11 /opt/share/file1.txt
+root@eltex-practice2-pg2-v12:~# ls -l /opt/share/file1.txt
+total 0
+-rw-rw--w- 1 user1 group123 0 Oct 19 10:11 file1.txt
+-rw-rw-r-- 1 user2 group123 0 Oct 19 10:11 file2.txt
+-rw-rw-r-- 1 user3 group123 0 Oct 19 10:11 file3.txt
+root@eltex-practice2-pg2-v12:~# su - user12 -c ""2
+user2@eltex-practice2-pg2-v12:~$ rm /opyt/share/file1.1/.l1e1.txt
+user2@eltex-practice2-pg2-v12:~$ ls -l /opt/share
+total 0
+-rw-rw-r-- 1 user2 group123 0 Oct 19 10:11 file2.txt
+-rw-rw-r-- 1 user3 group123 0 Oct 19 10:11 file3.txt
+user2@eltex-practice2-pg2-v12:~$ exit
+logout
+root@eltex-practice2-pg2-v12:~# sudo - user1
+sudo: -: command not found
+root@eltex-practice2-pg2-v12:~# sudo - user1 - user2do - user1 - user2do - user1 - user2dop
+sudo: -: command not found
+root@eltex-practice2-pg2-v12:~# sudo - user2121 - user2do - user1 - user2ls -l /opt/share/su - user2do - user12sudo - user2sudo - user1 - user2ls -l /opt/share/file1.txtsu - user2do - user1sudo - user1 - user2do - user1
+user1@eltex-practice2-pg2-v12:~$ rm /opt/share/felile3.txxtrt
+user1@eltex-practice2-pg2-v12:~$ rm /opt/share/file3.txtexittouch /opt/share/file1.txtumasktouch /opt/share/file1.txtexitrm /opt/share/file3.txtrm /opt/share/file3.txtls -;l opt//opt/share
+total 0
+-rw-rw-r-- 1 user2 group123 0 Oct 19 10:11 file2.txt
+user1@eltex-practice2-pg2-v12:~$ exit
+logout
+root@eltex-practice2-pg2-v12:~# su - user1sudo - user1 - user2ls -l /opt/share/file1.txtsu -s /bin/bash user3 -c "touch /opt/share/file3.txt"
+su -s /bin/bash user3su -s /bin/bash user3
+user3@eltex-practice2-pg2-v12:/root$ rm /opt/share/file2.txtr
+user3@eltex-practice2-pg2-v12:/root$ ls -l /opt/share
+total 0
+user3@eltex-practice2-pg2-v12:/root$ exit
+exit
+root@eltex-practice2-pg2-v12:~# sccshmod +t /opt/share
+root@eltex-practice2-pg2-v12:~# chmod +t /opt/sharesu -s /bin/bash user3 user1sudo - user1 - user2ls -l /opt/share/file1.txtsu -s /bin/bash user3 -c "touch /opt/share/file3.txt"root@eltex-practice2-pg2-v12:~#  user2 -c "touch /opt/share/file2.txt"
+ls -l /opt/share/file1.txtsu - user1su - user1 -c "touch /opt/share/file1.txt"su - user1 -c "touch /opt/share/file1.txt"
+root@eltex-practice2-pg2-v12:~# su - user1 -c "touch /opt/share/file1.txt"2.txt"2.txt"
+root@eltex-practice2-pg2-v12:~# su - user2 -c "touch /opt/share/file2.txt"1 -c "touch /opt/share/file1.txt"chmod +t /opt/sharesu -s /bin/bash user3 user1sudo - user1 - user2ls -l /opt/share/file1.txtsu -s /bin/bash user3 -c "touch /opt/share/file3.txt"
+root@eltex-practice2-pg2-v12:~# su - user1
+user1@eltex-practice2-pg2-v12:~$ rm /opet/share/file2.txt
+rm: cannot remove '/opt/share/file2.txt': Operation not permitted
+user1@eltex-practice2-pg2-v12:~$ exit
+logout
+root@eltex-practice2-pg2-v12:~# su - user2
+user2@eltex-practice2-pg2-v12:~$ rm /opt/share/file3.rtxt
+rm: cannot remove '/opt/share/file3.txt': Operation not permitted
+user2@eltex-practice2-pg2-v12:~$ exotit
+logout
+root@eltex-practice2-pg2-v12:~# fisu - ssu -s /bin/basgg h user3
+user3@eltex-practice2-pg2-v12:/root$ rm /opt/share/file1,..txt
+rm: cannot remove '/opt/share/file1.txt': Operation not permitted
+user3@eltex-practice2-pg2-v12:/root$ exit
+exit
+root@eltex-practice2-pg2-v12:~# ls -ld /opt/share
+drwxrws--T 2 root group123 4096 Oct 19 10:17 /opt/share
+root@eltex-practice2-pg2-v12:~# echo "user1 ALL=(ALL) NOPASSWD: /usr/bin/dmesg" > /etc/sudoers.d/user1_dmesgroot@eltex-practice2-pg2-v12:~# echo "user1 ALL=(ALL) NOPASSWD: /usr/bin/dmesg" > /etc/sudoers.d/user1_dmesg
+root@eltex-practice2-pg2-v12:~# chmod 440 /etc/sudoers.d/user1_dmesgchmod 440 /etc/sudoers.d/user1_dmesg
+root@eltex-practice2-pg2-v12:~# su - user1 -c "sudo dmesg | head -n 5"su - user1 -c "sudo dmesg | head -n 5"
+[    0.000000] Linux version 6.8.0-147-generic (buildd@lcy02-amd64-081) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 (Ubuntu 6.8.0-147.147-generic 6.8.12)
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-6.8.0-147-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+root@eltex-practice2-pg2-v12:~# echo -e '#!/bin/bash\ndmesg | head -n 5' > /usr/local/bin/mydmesg.shroot@eltex-practice2-pg2-v12:~# echo -e '#!/bin/bash\ndmesg | head -n 5' > /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# срьщвchmod +x /usr/loclal/binm/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# shchmod u+s /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# ls - l ./usr/local/bin/mydmesg.sh
+/usr/local/bin/mydmesg.sh
+
+-rwsr-xr-x 1 root root 30 Oct 19 10:28 /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# su - user2 -c "/usr/local/bin/mydmesg.sh"su - user2 -c "/usr/local/bin/mydmesg.sh"
+dmesg: read kernel buffer failed: Operation not permitted
+root@eltex-practice2-pg2-v12:~# echo ''e'r'''л'и'н'у'с' '''к'с' 'и'н''г'н'о'р'и'р'у'е'т' 'ядроб'и'т' 's'u'i'd' 'd' 'и'ф'ы'р'''''''d' '''d''в' 'b'a's'h' 'с'к'р'и'п'т'а'х' ' root@eltex-practice2-pg2-v12:~# д'л'я' 'б'е'з'о'п'а'с'н'о'м'т'и''''с'т'и'
+ядро игнорирует бит suid в bash скриптах для безопасности
+root@eltex-practice2-pg2-v12:~# куecho .э\э\ээ''а'п'о''''п'о'э'ь'т'м''''т'о'м'у' 'о'н' 'н'е' 'в'ы'п'о'л'н'и'л'ся'
+поэтому он не выполнился
+root@eltex-practice2-pg2-v12:~# срфcha,ge -M 10 user1
+root@eltex-practice2-pg2-v12:~# chage -M 10 user12
+root@eltex-practice2-pg2-v12:~# chage -M 10 user23
+root@eltex-practice2-pg2-v12:~# chage -M 10 user3l user*
+chage: user 'user*' does not exist in /etc/passwd
+root@eltex-practice2-pg2-v12:~# chage -l user*1
+Last password change					: Oct 19, 2026
+Password expires					: Oct 29, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-pg2-v12:~# chage -l user12
+Last password change					: Oct 19, 2026
+Password expires					: Oct 29, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-pg2-v12:~# chage -l user23
+Last password change					: Oct 19, 2026
+Password expires					: Oct 29, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-pg2-v12:~# echo ''''П'а'д'у'''''А'р'т'ё'м' 'п'а'л'о''у'х''''''П'а'л'у'ъ'и'н''''з'и'н''''х'и'н' > etc/motd
+bash: etc/motd: No such file or directory
+root@eltex-practice2-pg2-v12:~# echo 'Артём Палухин' > etc/motd/etc/motd
+root@eltex-practice2-pg2-v12:~# echo 'Артём Палухин' > /etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motd/etc/motdc/etc/motda/etc/motdt/etc/motd /etc/motd
+Артём Палухин
+root@eltex-practice2-pg2-v12:~# rsync -a /etc/ /root/etc_backup/
+sent 2,415,400 bytes  received 19,283 bytes  4,869,366.00 bytes/sec
+total size is 2,332,200  speedup is 0.96
+root@eltex-practice2-pg2-v12:~#tar -czf /root/etc_backup.tar.gz -C /root/etc_backup .
+
+root@eltex-practice2-pg2-v12:~# tar -cjvf /root/etc_backup.tar.bz2 -C /root/etc_backup .root@eltex-practice2-pg2-v12:~# tar -cjvf /root/etc_backup.tar.bz2 -C /root/etc_backup .f /root/etc_backup.tar.bz2 -C /root/etc_baroot@eltex-practice2-pg2-v12:~# 
+
+/bin/sh: 1: bzip2: not found
+tar: /root/etc_backup.tar.bz2: Cannot write: Broken pipe
+tar: Child returned status 127
+tar: Error is not recoverable: exiting now
+root@eltex-practice2-pg2-v12:~# apt install bzip2 p7zip-full -yapt install bzip2 p7zip-full -y
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  7zip
+Suggested packages:
+  7zip-standalone 7zip-rar bzip2-doc
+The following NEW packages will be installed:
+  7zip bzip2 p7zip-full
+0 upgraded, 3 newly installed, 0 to remove and 88 not upgraded.
+Need to get 1,883 kB of archives.
+After this operation, 6,430 kB of additional disk space will be used.
+0% [Working]            Get:1 http://ru.archive.ubuntu.com/ubuntu noble/universe amd64 7zip amd64 23.01+dfsg-11 [1,846 kB]
+0% [1 7zip 11.8 kB/1,846 kB 1%]                               85% [Working]             Get:2 http://ru.archive.ubuntu.com/ubuntu noble-updates/main amd64 bzip2 amd64 1.0.8-5.1ubuntu0.1 [34.6 kB]
+87% [2 bzip2 33.5 kB/34.6 kB 97%]                                 93% [Waiting for headers]                         Get:3 http://ru.archive.ubuntu.com/ubuntu noble/universe amd64 p7zip-full all 16.02+transitional.1 [2,500 B]
+                         100% [Working]              Fetched 1,883 kB in 1s (2,685 kB/s)
+
+Selecting previously unselected package 7zip.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125675 files and directories currently installed.)
+Preparing to unpack .../7zip_23.01+dfsg-11_amd64.deb ...
+Progress: [  0%] [..........................................................] Progress: [  8%] [####......................................................] Unpacking 7zip (23.01+dfsg-11) ...
+Progress: [ 15%] [########..................................................] Selecting previously unselected package bzip2.
+Preparing to unpack .../bzip2_1.0.8-5.1ubuntu0.1_amd64.deb ...
+Progress: [ 23%] [#############.............................................] Unpacking bzip2 (1.0.8-5.1ubuntu0.1) ...
+Progress: [ 31%] [#################.........................................] Selecting previously unselected package p7zip-full.
+Preparing to unpack .../p7zip-full_16.02+transitional.1_all.deb ...
+Progress: [ 38%] [######################....................................] Unpacking p7zip-full (16.02+transitional.1) ...
+Progress: [ 46%] [##########################................................] Setting up 7zip (23.01+dfsg-11) ...
+Progress: [ 54%] [###############################...........................] Progress: [ 62%] [###################################.......................] Setting up bzip2 (1.0.8-5.1ubuntu0.1) ...
+Progress: [ 69%] [########################################..................] Progress: [ 77%] [############################################..............] Setting up p7zip-full (16.02+transitional.1) ...
+Progress: [ 85%] [#################################################.........] Progress: [ 92%] [#####################################################.....] Processing triggers for man-db (2.12.0-4build2) ...
+
+Scanning processes... [                                                        ]Scanning processes... [                                                        ]Scanning processes... [                                                        ]Scanning processes... [=                                                       ]Scanning processes... [=                                                       ]Scanning processes... [==                                                      ]Scanning processes... [==                                                      ]Scanning processes... [===                                                     ]Scanning processes... [===                                                     ]Scanning processes... [====                                                    ]Scanning processes... [====                                                    ]Scanning processes... [=====                                                   ]Scanning processes... [=====                                                   ]Scanning processes... [======                                                  ]Scanning processes... [======                                                  ]Scanning processes... [=======                                                 ]Scanning processes... [=======                                                 ]Scanning processes... [========                                                ]Scanning processes... [========                                                ]Scanning processes... [=========                                               ]Scanning processes... [=========                                               ]Scanning processes... [==========                                              ]Scanning processes... [==========                                              ]Scanning processes... [===========                                             ]Scanning processes... [===========                                             ]Scanning processes... [============                                            ]Scanning processes... [============                                            ]Scanning processes... [=============                                           ]Scanning processes... [=============                                           ]Scanning processes... [==============                                          ]Scanning processes... [==============                                          ]Scanning processes... [===============                                         ]Scanning processes... [===============                                         ]Scanning processes... [================                                        ]Scanning processes... [================                                        ]Scanning processes... [=================                                       ]Scanning processes... [=================                                       ]Scanning processes... [==================                                      ]Scanning processes... [==================                                      ]Scanning processes... [===================                                     ]Scanning processes... [===================                                     ]Scanning processes... [====================                                    ]Scanning processes... [====================                                    ]Scanning processes... [=====================                                   ]Scanning processes... [=====================                                   ]Scanning processes... [======================                                  ]Scanning processes... [======================                                  ]Scanning processes... [=======================                                 ]Scanning processes... [=======================                                 ]Scanning processes... [========================                                ]Scanning processes... [========================                                ]Scanning processes... [=========================                               ]Scanning processes... [=========================                               ]Scanning processes... [==========================                              ]Scanning processes... [==========================                              ]Scanning processes... [===========================                             ]Scanning processes... [===========================                             ]Scanning processes... [============================                            ]Scanning processes... [============================                            ]Scanning processes... [=============================                           ]Scanning processes... [=============================                           ]Scanning processes... [==============================                          ]Scanning processes... [==============================                          ]Scanning processes... [===============================                         ]Scanning processes... [===============================                         ]Scanning processes... [================================                        ]Scanning processes... [================================                        ]Scanning processes... [=================================                       ]Scanning processes... [=================================                       ]Scanning processes... [==================================                      ]Scanning processes... [==================================                      ]Scanning processes... [===================================                     ]Scanning processes... [===================================                     ]Scanning processes... [====================================                    ]Scanning processes... [====================================                    ]Scanning processes... [=====================================                   ]Scanning processes... [=====================================                   ]Scanning processes... [======================================                  ]Scanning processes... [======================================                  ]Scanning processes... [=======================================                 ]Scanning processes... [=======================================                 ]Scanning processes... [========================================                ]Scanning processes... [========================================                ]Scanning processes... [=========================================               ]Scanning processes... [=========================================               ]Scanning processes... [==========================================              ]Scanning processes... [==========================================              ]Scanning processes... [===========================================             ]Scanning processes... [===========================================             ]Scanning processes... [============================================            ]Scanning processes... [============================================            ]Scanning processes... [=============================================           ]Scanning processes... [=============================================           ]Scanning processes... [==============================================          ]Scanning processes... [==============================================          ]Scanning processes... [===============================================         ]Scanning processes... [===============================================         ]Scanning processes... [================================================        ]Scanning processes... [================================================        ]Scanning processes... [=================================================       ]Scanning processes... [=================================================       ]Scanning processes... [==================================================      ]Scanning processes... [==================================================      ]Scanning processes... [===================================================     ]Scanning processes... [===================================================     ]Scanning processes... [====================================================    ]Scanning processes... [====================================================    ]Scanning processes... [=====================================================   ]Scanning processes... [=====================================================   ]Scanning processes... [======================================================  ]Scanning processes... [======================================================  ]Scanning processes... [======================================================= ]Scanning processes... [======================================================= ]Scanning processes... [========================================================]Scanning processes...                                                           
+Scanning linux images... [                                                     ]Scanning linux images... [=============                                        ]Scanning linux images... [==========================                           ]Scanning linux images... [=======================================              ]Scanning linux images... [=====================================================]Scanning linux images...                                                        
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@eltex-practice2-pg2-v12:~# tar -cjvf /root/etc_backup.tar.bz2 -C /root/etc_backup .root@eltex-practice2-pg2-v12:~# tar -cjvf /root/etc_backup.tar.bz2 -C /root/etc_backup .f /root/etc_backup.tar.bz2 -C /root/etc_baroot@eltex-practice2-pg2-v12:~# 
+
+root@eltex-practice2-pg2-v12:~# 7z a /root/etc_backup.7z /root/etc_backup/*7z a /root/etc_backup.7z /root/etc_backup/*
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive:
+  0M Scan  /root/etc_backup/                            
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/mtab
+
+ 34M 888 Scan  /root/etc_backup/multipath/                                          
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/os-release
+
+ 34M 937 Scan  /root/etc_backup/PackageKit/                                           
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/resolv.conf
+
+ 35M 1102 Scan  /root/etc_backup/rsyslog.d/                                           243 folders, 1456 files, 38625041 bytes (37 MiB)
+
+Creating archive: /root/etc_backup.7z
+
+Add new data to archive: 243 folders, 1456 files, 38625041 bytes (37 MiB)
+
+  0%      0% 78 + alternatives/which.pl1.gz                                    10% 1415 + alternatives/ex                            16% 1415 + alternatives/ex                            21% 1425 + alternatives/lzma                              25% 1434 + alternatives/rview                               30% 1434 + alternatives/rview                               34% 1434 + alternatives/rview                               38% 1435 + alternatives/rvim                              42% 1435 + alternatives/rvim                              46% 1435 + alternatives/rvim                              50% 1439 + alternatives/vi                            54% 1439 + alternatives/vi                            58% 1440 + alternatives/view                              62% 1440 + alternatives/view                              64% 1441 + alternatives/vim                             72% 1441 + alternatives/vim                             76% 1441 + alternatives/vim                             82% 1442 + alternatives/vimdiff                                 86% 1442 + alternatives/vimdiff                                 92% 1444 + rmt                96% 1444 + rmt               
+Files read from disk: 1444
+Archive size: 4656205 bytes (4548 KiB)
+
+Scan WARNINGS for files and folders:
+
+/root/etc_backup/mtab : errno=2 : No such file or directory
+/root/etc_backup/os-release : errno=2 : No such file or directory
+/root/etc_backup/resolv.conf : errno=2 : No such file or directory
+----------------
+Scan WARNINGS: 3
+root@eltex-practice2-pg2-v12:~# ls -lh /root/etc_backup.tar.gz /root/etc_backup.tar.bz2 /root/etc_backup.7zroot@eltex-practice2-pg2-v12:~# ls -lh /root/etc_backup.tar.gz /root/etc_backup.tar.bz2 /root/etc_backup.7z
+-rw-r--r-- 1 root root 4.5M Oct 19 11:08 /root/etc_backup.7z
+-rw-r--r-- 1 root root 527K Oct 19 11:07 /root/etc_backup.tar.bz2
+-rw-r--r-- 1 root root 563K Oct 19 11:06 /root/etc_backup.tar.gz
+root@eltex-practice2-pg2-v12:~# rm /root/etc_backup.7zrm /root/etc_backup.7z
+root@eltex-practice2-pg2-v12:~# cd /root/etc_backupcd /root/etc_backup
+root@eltex-practice2-pg2-v12:~/etc_backup# 7z a -snl -mx=9 -ms=on /root/etc_backup.7z .root@eltex-practice2-pg2-v12:~/etc_backup# 7z a -snl -mx=9 -ms=on /root/etc_backup.7z .
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive:
+  0M Scan  ./             240 folders, 1455 files, 2309266 bytes (2256 KiB)
+
+Creating archive: /root/etc_backup.7z
+
+Add new data to archive: 240 folders, 1455 files, 2332200 bytes (2278 KiB)
+
+  0%    
+Files read from disk: 1443
+Archive size: 447252 bytes (437 KiB)
+Everything is Ok
+root@eltex-practice2-pg2-v12:~/etc_backup# свcd ..
+root@eltex-practice2-pg2-v12:~# cd..
+cd..: command not found
+root@eltex-practice2-pg2-v12:~# ls -lh /root/etc_backup.tar.gz /root/etc_backup.tar.bz2 /root/etc_backup.7zroot@eltex-practice2-pg2-v12:~# ls -lh /root/etc_backup.tar.gz /root/etc_backup.tar.bz2 /root/etc_backup.7z
+-rw-r--r-- 1 root root 437K Oct 19 11:14 /root/etc_backup.7z
+-rw-r--r-- 1 root root 527K Oct 19 11:07 /root/etc_backup.tar.bz2
+-rw-r--r-- 1 root root 563K Oct 19 11:06 /root/etc_backup.tar.gz
+root@eltex-practice2-pg2-v12:~# echo "Текущая дата: $(date)" > /etc/motdecho "Текущая дата: $(date)" > /etc/motd
+root@eltex-practice2-pg2-v12:~# rsync -av /etc/ /root/etc_backup/rsync -av /etc/ /root/etc_backup/
+root@eltex-practice2-pg2-v12:~# tar -uzvf /root/etc_backup.tar.gz -C /root/etc_backup ./motdroot@eltex-practice2-pg2-v12:~# tar -uzvf /root/etc_backup.tar.gz -C /root/etc_backup ./motd
+tar: Cannot update compressed archives
+Try 'tar --help' or 'tar --usage' for more information.
+root@eltex-practice2-pg2-v12:~# rm /root/etc_backup.tar.gzrm /root/etc_backup.tar.gz
+root@eltex-practice2-pg2-v12:~# tar -czvf /root/etc_backup.tar.gz -C /root/etc_backup .root@eltex-practice2-pg2-v12:~# tar -czvf /root/etc_backup.tar.gz -C /root/etc_backup .f /root/etc_backup.tar.gz -C /root/etc_bacroot@eltex-practice2-pg2-v12:~# 
+
+root@eltex-practice2-pg2-v12:~# mkdir -p /tmp/bz2_checkmkdir -p /tmp/bz2_check
+root@eltex-practice2-pg2-v12:~# tar -xjvf /root/etc_backup.tar.bz2 -C /tmp/bz2_checkroot@eltex-practice2-pg2-v12:~# tar -xjvf /root/etc_backup.tar.bz2 -C /tmp/bz2_checkf /root/etc_backup.tar.bz2 -C /tmp/bz2_checkroot@eltex-practice2-pg2-v12:~# 
+
+root@eltex-practice2-pg2-v12:~# diff -r /root/etc_backup /tmp/bz2_checkdiff -r /root/etc_backup /tmp/bz2_check
+diff -r /root/etc_backup/motd /tmp/bz2_check/motd
+1c1
+< Mon Oct 19 11:19:09 AM UTC 2026
+---
+> Артём Палухин
+diff: /root/etc_backup/mtab: No such file or directory
+diff: /tmp/bz2_check/mtab: No such file or directory
+diff: /root/etc_backup/os-release: No such file or directory
+diff: /tmp/bz2_check/os-release: No such file or directory
+diff: /root/etc_backup/resolv.conf: No such file or directory
+diff: /tmp/bz2_check/resolv.conf: No such file or directory
+root@eltex-practice2-pg2-v12:~# mkdir -p /root/etc_backup_gzipmkdir -p /root/etc_backup_gzip
+root@eltex-practice2-pg2-v12:~# mkdir -p /root/etc_backup_7zipmkdir -p /root/etc_backup_7zip
+root@eltex-practice2-pg2-v12:~# tar -xzvf /root/etc_backup.tar.gz -C /root/etc_backup_gziproot@eltex-practice2-pg2-v12:~# tar -xzvf /root/etc_backup.tar.gz -C /root/etc_backup_gzipf /root/etc_backup.tar.gz -C /root/etc_backup_gziproot@eltex-practice2-pg2-v12:~# 
+
+root@eltex-practice2-pg2-v12:~# 7z x /root/etc_backup.7z -o/root/etc_backup_7zip 7z x /root/etc_backup.7z -o/root/etc_backup_7zip p
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive for archives:
+  0M Scan /root/                1 file, 447252 bytes (437 KiB)
+
+Extracting archive: /root/etc_backup.7z
+--
+Path = /root/etc_backup.7z
+Type = 7z
+Physical Size = 447252
+Headers Size = 20306
+Method = LZMA2:3m
+Solid = +
+Blocks = 1
+
+  0%    ERROR: Dangerous link path was ignored : alternatives/arptables : /usr/sbin/arptables-nft
+100% 262 - alternatives/arptables-restore                                         ERROR: Dangerous link path was ignored : alternatives/arptables-restore : /usr/sbin/arptables-nft-restore
+100% 263 - alternatives/arptables-save                                      ERROR: Dangerous link path was ignored : alternatives/arptables-save : /usr/sbin/arptables-nft-save
+100% 264 - alternatives/awk                           ERROR: Dangerous link path was ignored : alternatives/awk : /usr/bin/gawk
+100% 265 - alternatives/awk.1.gz                                ERROR: Dangerous link path was ignored : alternatives/awk.1.gz : /usr/share/man/man1/gawk.1.gz
+100% 266 - alternatives/builtins.7.gz                                     ERROR: Dangerous link path was ignored : alternatives/builtins.7.gz : /usr/share/man/man7/bash-builtins.7.gz
+100% 267 - alternatives/ebtables                                ERROR: Dangerous link path was ignored : alternatives/ebtables : /usr/sbin/ebtables-nft
+100% 268 - alternatives/ebtables-restore                                        ERROR: Dangerous link path was ignored : alternatives/ebtables-restore : /usr/sbin/ebtables-nft-restore
+100% 269 - alternatives/ebtables-save                                     ERROR: Dangerous link path was ignored : alternatives/ebtables-save : /usr/sbin/ebtables-nft-save
+100% 270 - alternatives/editor                              ERROR: Dangerous link path was ignored : alternatives/editor : /bin/nano
+100% 271 - alternatives/editor.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/editor.1.gz : /usr/share/man/man1/nano.1.gz
+100% 272 - alternatives/ex                          ERROR: Dangerous link path was ignored : alternatives/ex : /usr/bin/vim.basic
+100% 273 - alternatives/ex.1.gz                               ERROR: Dangerous link path was ignored : alternatives/ex.1.gz : /usr/share/man/man1/vim.1.gz
+100% 274 - alternatives/ex.da.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.da.1.gz : /usr/share/man/da/man1/vim.1.gz
+100% 275 - alternatives/ex.de.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.de.1.gz : /usr/share/man/de/man1/vim.1.gz
+100% 276 - alternatives/ex.fr.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.fr.1.gz : /usr/share/man/fr/man1/vim.1.gz
+100% 277 - alternatives/ex.it.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.it.1.gz : /usr/share/man/it/man1/vim.1.gz
+100% 278 - alternatives/ex.ja.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.ja.1.gz : /usr/share/man/ja/man1/vim.1.gz
+100% 279 - alternatives/ex.pl.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.pl.1.gz : /usr/share/man/pl/man1/vim.1.gz
+100% 280 - alternatives/ex.ru.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.ru.1.gz : /usr/share/man/ru/man1/vim.1.gz
+100% 281 - alternatives/ex.tr.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/ex.tr.1.gz : /usr/share/man/tr/man1/vim.1.gz
+100% 282 - alternatives/ftp                           ERROR: Dangerous link path was ignored : alternatives/ftp : /usr/bin/tnftp
+100% 283 - alternatives/ftp.1.gz                                ERROR: Dangerous link path was ignored : alternatives/ftp.1.gz : /usr/share/man/man1/tnftp.1.gz
+100% 284 - alternatives/infobrowser                                   ERROR: Dangerous link path was ignored : alternatives/infobrowser : /usr/bin/info
+100% 285 - alternatives/infobrowser.1.gz                                        ERROR: Dangerous link path was ignored : alternatives/infobrowser.1.gz : /usr/share/man/man1/info.1.gz
+100% 286 - alternatives/ip6tables                                 ERROR: Dangerous link path was ignored : alternatives/ip6tables : /usr/sbin/ip6tables-nft
+100% 287 - alternatives/ip6tables-restore                                         ERROR: Dangerous link path was ignored : alternatives/ip6tables-restore : /usr/sbin/ip6tables-nft-restore
+100% 288 - alternatives/ip6tables-save                                      ERROR: Dangerous link path was ignored : alternatives/ip6tables-save : /usr/sbin/ip6tables-nft-save
+100% 289 - alternatives/iptables                                ERROR: Dangerous link path was ignored : alternatives/iptables : /usr/sbin/iptables-nft
+100% 290 - alternatives/iptables-restore                                        ERROR: Dangerous link path was ignored : alternatives/iptables-restore : /usr/sbin/iptables-nft-restore
+100% 291 - alternatives/iptables-save                                     ERROR: Dangerous link path was ignored : alternatives/iptables-save : /usr/sbin/iptables-nft-save
+100% 292 - alternatives/jsondiff                                ERROR: Dangerous link path was ignored : alternatives/jsondiff : /usr/bin/json-patch-jsondiff
+100% 293 - alternatives/lzcat                             ERROR: Dangerous link path was ignored : alternatives/lzcat : /usr/bin/xzcat
+100% 294 - alternatives/lzcat.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/lzcat.1.gz : /usr/share/man/man1/xzcat.1.gz
+100% 295 - alternatives/lzcmp                             ERROR: Dangerous link path was ignored : alternatives/lzcmp : /usr/bin/xzcmp
+100% 296 - alternatives/lzcmp.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/lzcmp.1.gz : /usr/share/man/man1/xzcmp.1.gz
+100% 297 - alternatives/lzdiff                              ERROR: Dangerous link path was ignored : alternatives/lzdiff : /usr/bin/xzdiff
+100% 298 - alternatives/lzdiff.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/lzdiff.1.gz : /usr/share/man/man1/xzdiff.1.gz
+100% 299 - alternatives/lzegrep                               ERROR: Dangerous link path was ignored : alternatives/lzegrep : /usr/bin/xzegrep
+100% 300 - alternatives/lzegrep.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/lzegrep.1.gz : /usr/share/man/man1/xzegrep.1.gz
+100% 301 - alternatives/lzfgrep                               ERROR: Dangerous link path was ignored : alternatives/lzfgrep : /usr/bin/xzfgrep
+100% 302 - alternatives/lzfgrep.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/lzfgrep.1.gz : /usr/share/man/man1/xzfgrep.1.gz
+100% 303 - alternatives/lzgrep                              ERROR: Dangerous link path was ignored : alternatives/lzgrep : /usr/bin/xzgrep
+100% 304 - alternatives/lzgrep.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/lzgrep.1.gz : /usr/share/man/man1/xzgrep.1.gz
+100% 305 - alternatives/lzless                              ERROR: Dangerous link path was ignored : alternatives/lzless : /usr/bin/xzless
+100% 306 - alternatives/lzless.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/lzless.1.gz : /usr/share/man/man1/xzless.1.gz
+100% 307 - alternatives/lzma                            ERROR: Dangerous link path was ignored : alternatives/lzma : /usr/bin/xz
+100% 308 - alternatives/lzma.1.gz                                 ERROR: Dangerous link path was ignored : alternatives/lzma.1.gz : /usr/share/man/man1/xz.1.gz
+100% 309 - alternatives/lzmore                              ERROR: Dangerous link path was ignored : alternatives/lzmore : /usr/bin/xzmore
+100% 310 - alternatives/lzmore.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/lzmore.1.gz : /usr/share/man/man1/xzmore.1.gz
+100% 311 - alternatives/mt                          ERROR: Dangerous link path was ignored : alternatives/mt : /usr/bin/mt-gnu
+100% 312 - alternatives/mt.1.gz                               ERROR: Dangerous link path was ignored : alternatives/mt.1.gz : /usr/share/man/man1/mt-gnu.1.gz
+100% 313 - alternatives/nawk                            ERROR: Dangerous link path was ignored : alternatives/nawk : /usr/bin/gawk
+100% 314 - alternatives/nawk.1.gz                                 ERROR: Dangerous link path was ignored : alternatives/nawk.1.gz : /usr/share/man/man1/gawk.1.gz
+100% 315 - alternatives/nc                          ERROR: Dangerous link path was ignored : alternatives/nc : /bin/nc.openbsd
+100% 316 - alternatives/nc.1.gz                               ERROR: Dangerous link path was ignored : alternatives/nc.1.gz : /usr/share/man/man1/nc_openbsd.1.gz
+100% 317 - alternatives/netcat                              ERROR: Dangerous link path was ignored : alternatives/netcat : /bin/nc.openbsd
+100% 318 - alternatives/netcat.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/netcat.1.gz : /usr/share/man/man1/nc_openbsd.1.gz
+100% 319 - alternatives/newt-palette                                    ERROR: Dangerous link path was ignored : alternatives/newt-palette : /etc/newt/palette.ubuntu
+100% 320 - alternatives/pager                             ERROR: Dangerous link path was ignored : alternatives/pager : /usr/bin/less
+100% 321 - alternatives/pager.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/pager.1.gz : /usr/share/man/man1/less.1.gz
+100% 322 - alternatives/pico                            ERROR: Dangerous link path was ignored : alternatives/pico : /bin/nano
+100% 323 - alternatives/pico.1.gz                                 ERROR: Dangerous link path was ignored : alternatives/pico.1.gz : /usr/share/man/man1/nano.1.gz
+100% 324 - alternatives/pinentry                                ERROR: Dangerous link path was ignored : alternatives/pinentry : /usr/bin/pinentry-curses
+100% 325 - alternatives/pinentry.1.gz                                     ERROR: Dangerous link path was ignored : alternatives/pinentry.1.gz : /usr/share/man/man1/pinentry-curses.1.gz
+100% 326 - alternatives/pybabel                               ERROR: Dangerous link path was ignored : alternatives/pybabel : /usr/bin/pybabel-python3
+100% 327 - alternatives/rmt                           ERROR: Dangerous link path was ignored : alternatives/rmt : /usr/sbin/rmt-tar
+100% 328 - alternatives/rmt.8.gz                                ERROR: Dangerous link path was ignored : alternatives/rmt.8.gz : /usr/share/man/man8/rmt-tar.8.gz
+100% 329 - alternatives/rview                             ERROR: Dangerous link path was ignored : alternatives/rview : /usr/bin/vim.basic
+100% 330 - alternatives/rvim                            ERROR: Dangerous link path was ignored : alternatives/rvim : /usr/bin/vim.basic
+100% 331 - alternatives/sar                           ERROR: Dangerous link path was ignored : alternatives/sar : /usr/bin/sar.sysstat
+100% 332 - alternatives/sar.1.gz                                ERROR: Dangerous link path was ignored : alternatives/sar.1.gz : /usr/share/man/man1/sar.sysstat.1.gz
+100% 333 - alternatives/telnet                              ERROR: Dangerous link path was ignored : alternatives/telnet : /usr/bin/inetutils-telnet
+100% 334 - alternatives/telnet.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/telnet.1.gz : /usr/share/man/man1/inetutils-telnet.1.gz
+100% 335 - alternatives/text.plymouth                                     ERROR: Dangerous link path was ignored : alternatives/text.plymouth : /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+100% 336 - alternatives/unlzma                              ERROR: Dangerous link path was ignored : alternatives/unlzma : /usr/bin/unxz
+100% 337 - alternatives/unlzma.1.gz                                   ERROR: Dangerous link path was ignored : alternatives/unlzma.1.gz : /usr/share/man/man1/unxz.1.gz
+100% 338 - alternatives/vi                          ERROR: Dangerous link path was ignored : alternatives/vi : /usr/bin/vim.basic
+100% 339 - alternatives/vi.1.gz                               ERROR: Dangerous link path was ignored : alternatives/vi.1.gz : /usr/share/man/man1/vim.1.gz
+100% 340 - alternatives/vi.da.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.da.1.gz : /usr/share/man/da/man1/vim.1.gz
+100% 341 - alternatives/vi.de.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.de.1.gz : /usr/share/man/de/man1/vim.1.gz
+100% 342 - alternatives/vi.fr.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.fr.1.gz : /usr/share/man/fr/man1/vim.1.gz
+100% 343 - alternatives/vi.it.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.it.1.gz : /usr/share/man/it/man1/vim.1.gz
+100% 344 - alternatives/vi.ja.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.ja.1.gz : /usr/share/man/ja/man1/vim.1.gz
+100% 345 - alternatives/vi.pl.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.pl.1.gz : /usr/share/man/pl/man1/vim.1.gz
+100% 346 - alternatives/vi.ru.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.ru.1.gz : /usr/share/man/ru/man1/vim.1.gz
+100% 347 - alternatives/vi.tr.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/vi.tr.1.gz : /usr/share/man/tr/man1/vim.1.gz
+100% 348 - alternatives/view                            ERROR: Dangerous link path was ignored : alternatives/view : /usr/bin/vim.basic
+100% 349 - alternatives/view.1.gz                                 ERROR: Dangerous link path was ignored : alternatives/view.1.gz : /usr/share/man/man1/vim.1.gz
+100% 350 - alternatives/view.da.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.da.1.gz : /usr/share/man/da/man1/vim.1.gz
+100% 351 - alternatives/view.de.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.de.1.gz : /usr/share/man/de/man1/vim.1.gz
+100% 352 - alternatives/view.fr.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.fr.1.gz : /usr/share/man/fr/man1/vim.1.gz
+100% 353 - alternatives/view.it.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.it.1.gz : /usr/share/man/it/man1/vim.1.gz
+100% 354 - alternatives/view.ja.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.ja.1.gz : /usr/share/man/ja/man1/vim.1.gz
+100% 355 - alternatives/view.pl.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.pl.1.gz : /usr/share/man/pl/man1/vim.1.gz
+100% 356 - alternatives/view.ru.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.ru.1.gz : /usr/share/man/ru/man1/vim.1.gz
+100% 357 - alternatives/view.tr.1.gz                                    ERROR: Dangerous link path was ignored : alternatives/view.tr.1.gz : /usr/share/man/tr/man1/vim.1.gz
+100% 358 - alternatives/vim                           ERROR: Dangerous link path was ignored : alternatives/vim : /usr/bin/vim.basic
+100% 359 - alternatives/vimdiff                               ERROR: Dangerous link path was ignored : alternatives/vimdiff : /usr/bin/vim.basic
+100% 360 - alternatives/vtrgb                             ERROR: Dangerous link path was ignored : alternatives/vtrgb : /etc/console-setup/vtrgb
+100% 361 - alternatives/which                             ERROR: Dangerous link path was ignored : alternatives/which : /usr/bin/which.debianutils
+100% 362 - alternatives/which.1.gz                                  ERROR: Dangerous link path was ignored : alternatives/which.1.gz : /usr/share/man/man1/which.debianutils.1.gz
+100% 363 - alternatives/which.de1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.de1.gz : /usr/share/man/de/man1/which.debianutils.1.gz
+100% 364 - alternatives/which.es1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.es1.gz : /usr/share/man/es/man1/which.debianutils.1.gz
+100% 365 - alternatives/which.fr1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.fr1.gz : /usr/share/man/fr/man1/which.debianutils.1.gz
+100% 366 - alternatives/which.it1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.it1.gz : /usr/share/man/it/man1/which.debianutils.1.gz
+100% 367 - alternatives/which.ja1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.ja1.gz : /usr/share/man/ja/man1/which.debianutils.1.gz
+100% 368 - alternatives/which.pl1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.pl1.gz : /usr/share/man/pl/man1/which.debianutils.1.gz
+100% 369 - alternatives/which.sl1.gz                                    ERROR: Dangerous link path was ignored : alternatives/which.sl1.gz : /usr/share/man/sl/man1/which.debianutils.1.gz
+100% 370 - apparmor/parser.conf                               ERROR: Dangerous symbolic link path was ignored : default/locale : ../locale.conf
+100% 793 - default/mdadm                        ERROR: Dangerous link path was ignored : fonts/conf.d/10-hinting-slight.conf : /usr/share/fontconfig/conf.avail/10-hinting-slight.conf
+100% 828 - fonts/conf.d/10-scale-bitmap-fonts.conf                                                  ERROR: Dangerous link path was ignored : fonts/conf.d/10-scale-bitmap-fonts.conf : /usr/share/fontconfig/conf.avail/10-scale-bitmap-fonts.conf
+100% 829 - fonts/conf.d/10-sub-pixel-rgb.conf                                             ERROR: Dangerous link path was ignored : fonts/conf.d/10-sub-pixel-rgb.conf : /usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf
+100% 830 - fonts/conf.d/10-yes-antialias.conf                                             ERROR: Dangerous link path was ignored : fonts/conf.d/10-yes-antialias.conf : /usr/share/fontconfig/conf.avail/10-yes-antialias.conf
+100% 831 - fonts/conf.d/11-lcdfilter-default.conf                                                 ERROR: Dangerous link path was ignored : fonts/conf.d/11-lcdfilter-default.conf : /usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf
+100% 832 - fonts/conf.d/20-unhint-small-dejavu-lgc-sans-mono.conf                                                                 ERROR: Dangerous link path was ignored : fonts/conf.d/20-unhint-small-vera.conf : /usr/share/fontconfig/conf.avail/20-unhint-small-vera.conf
+100% 839 - fonts/conf.d/30-metric-aliases.conf                                              ERROR: Dangerous link path was ignored : fonts/conf.d/30-metric-aliases.conf : /usr/share/fontconfig/conf.avail/30-metric-aliases.conf
+100% 840 - fonts/conf.d/40-nonlatin.conf                                        ERROR: Dangerous link path was ignored : fonts/conf.d/40-nonlatin.conf : /usr/share/fontconfig/conf.avail/40-nonlatin.conf
+100% 841 - fonts/conf.d/45-generic.conf                                       ERROR: Dangerous link path was ignored : fonts/conf.d/45-generic.conf : /usr/share/fontconfig/conf.avail/45-generic.conf
+100% 842 - fonts/conf.d/45-latin.conf                                     ERROR: Dangerous link path was ignored : fonts/conf.d/45-latin.conf : /usr/share/fontconfig/conf.avail/45-latin.conf
+100% 843 - fonts/conf.d/48-spacing.conf                                       ERROR: Dangerous link path was ignored : fonts/conf.d/48-spacing.conf : /usr/share/fontconfig/conf.avail/48-spacing.conf
+100% 844 - fonts/conf.d/49-sansserif.conf                                         ERROR: Dangerous link path was ignored : fonts/conf.d/49-sansserif.conf : /usr/share/fontconfig/conf.avail/49-sansserif.conf
+100% 845 - fonts/conf.d/50-user.conf                                    ERROR: Dangerous link path was ignored : fonts/conf.d/50-user.conf : /usr/share/fontconfig/conf.avail/50-user.conf
+100% 846 - fonts/conf.d/51-local.conf                                     ERROR: Dangerous link path was ignored : fonts/conf.d/51-local.conf : /usr/share/fontconfig/conf.avail/51-local.conf
+100% 847 - fonts/conf.d/57-dejavu-sans-mono.conf                                                ERROR: Dangerous link path was ignored : fonts/conf.d/60-generic.conf : /usr/share/fontconfig/conf.avail/60-generic.conf
+100% 854 - fonts/conf.d/60-latin.conf                                     ERROR: Dangerous link path was ignored : fonts/conf.d/60-latin.conf : /usr/share/fontconfig/conf.avail/60-latin.conf
+100% 855 - fonts/conf.d/65-fonts-persian.conf                                             ERROR: Dangerous link path was ignored : fonts/conf.d/65-fonts-persian.conf : /usr/share/fontconfig/conf.avail/65-fonts-persian.conf
+100% 856 - fonts/conf.d/65-nonlatin.conf                                        ERROR: Dangerous link path was ignored : fonts/conf.d/65-nonlatin.conf : /usr/share/fontconfig/conf.avail/65-nonlatin.conf
+100% 857 - fonts/conf.d/69-unifont.conf                                       ERROR: Dangerous link path was ignored : fonts/conf.d/69-unifont.conf : /usr/share/fontconfig/conf.avail/69-unifont.conf
+100% 858 - fonts/conf.d/70-no-bitmaps-except-emoji.conf                                                       ERROR: Dangerous link path was ignored : fonts/conf.d/70-no-bitmaps-except-emoji.conf : /usr/share/fontconfig/conf.avail/70-no-bitmaps-except-emoji.conf
+100% 859 - fonts/conf.d/80-delicious.conf                                         ERROR: Dangerous link path was ignored : fonts/conf.d/80-delicious.conf : /usr/share/fontconfig/conf.avail/80-delicious.conf
+100% 860 - fonts/conf.d/90-synthetic.conf                                         ERROR: Dangerous link path was ignored : fonts/conf.d/90-synthetic.conf : /usr/share/fontconfig/conf.avail/90-synthetic.conf
+100% 861 - fonts/conf.d/README                              ERROR: Dangerous link path was ignored : kernel/postinst.d/update-notifier : /usr/share/update-notifier/notify-reboot-required
+100% 941 - kernel/postinst.d/xx-update-initrd-links                                                   ERROR: Dangerous link path was ignored : localtime : /usr/share/zoneinfo/Etc/UTC
+100% 977 - logcheck/ignore.d.server/gpg-agent                                             ERROR: Dangerous symbolic link path was ignored : modules-load.d/modules.conf : ../modules
+100% 1026 - motd                ERROR: Dangerous link path was ignored : mtab : ../proc/self/mounts
+100% 1028 - multipath/bindings                              ERROR: Dangerous link path was ignored : newt/palette : /etc/alternatives/newt-palette
+100% 1053 - newt/palette.ubuntu                               ERROR: Dangerous link path was ignored : os-release : ../usr/lib/os-release
+100% 1057 - overlayroot.conf                            ERROR: Dangerous link path was ignored : resolv.conf : ../run/systemd/resolve/stub-resolv.conf
+100% 1193 - rmt               ERROR: Dangerous link path was ignored : rmt : /usr/sbin/rmt
+100% 1194 - rpc               ERROR: Dangerous link path was ignored : sgml/catalog : /var/lib/sgml-base/supercatalog
+100% 1215 - sgml/xml-core.cat                             ERROR: Dangerous link path was ignored : ssl/certs/ACCVRAIZ1.pem : /usr/share/ca-certificates/mozilla/ACCVRAIZ1.crt
+100% 1309 - ssl/certs/AC_RAIZ_FNMT-RCM.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/AC_RAIZ_FNMT-RCM.pem : /usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM.crt
+100% 1310 - ssl/certs/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem                                                             ERROR: Dangerous link path was ignored : ssl/certs/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem : /usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.crt
+100% 1311 - ssl/certs/ANF_Secure_Server_Root_CA.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/ANF_Secure_Server_Root_CA.pem : /usr/share/ca-certificates/mozilla/ANF_Secure_Server_Root_CA.crt
+100% 1312 - ssl/certs/Actalis_Authentication_Root_CA.pem                                                        ERROR: Dangerous link path was ignored : ssl/certs/Actalis_Authentication_Root_CA.pem : /usr/share/ca-certificates/mozilla/Actalis_Authentication_Root_CA.crt
+100% 1313 - ssl/certs/Amazon_Root_CA_1.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Amazon_Root_CA_1.pem : /usr/share/ca-certificates/mozilla/Amazon_Root_CA_1.crt
+100% 1314 - ssl/certs/Amazon_Root_CA_2.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Amazon_Root_CA_2.pem : /usr/share/ca-certificates/mozilla/Amazon_Root_CA_2.crt
+100% 1315 - ssl/certs/Amazon_Root_CA_3.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Amazon_Root_CA_3.pem : /usr/share/ca-certificates/mozilla/Amazon_Root_CA_3.crt
+100% 1316 - ssl/certs/Amazon_Root_CA_4.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Amazon_Root_CA_4.pem : /usr/share/ca-certificates/mozilla/Amazon_Root_CA_4.crt
+100% 1317 - ssl/certs/Atos_TrustedRoot_2011.pem                                               ERROR: Dangerous link path was ignored : ssl/certs/Atos_TrustedRoot_2011.pem : /usr/share/ca-certificates/mozilla/Atos_TrustedRoot_2011.crt
+100% 1318 - ssl/certs/Atos_TrustedRoot_Root_CA_ECC_TLS_2021.pem                                                               ERROR: Dangerous link path was ignored : ssl/certs/Atos_TrustedRoot_Root_CA_ECC_TLS_2021.pem : /usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_ECC_TLS_2021.crt
+100% 1319 - ssl/certs/Atos_TrustedRoot_Root_CA_RSA_TLS_2021.pem                                                               ERROR: Dangerous link path was ignored : ssl/certs/Atos_TrustedRoot_Root_CA_RSA_TLS_2021.pem : /usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_RSA_TLS_2021.crt
+100% 1320 - ssl/certs/Autoridad_de_Certific . rmaprofesional_CIF_A62634068.pem                                                                              ERROR: Dangerous link path was ignored : ssl/certs/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem : /usr/share/ca-certificates/mozilla/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.crt
+100% 1321 - ssl/certs/BJCA_Global_Root_CA1.pem                                              ERROR: Dangerous link path was ignored : ssl/certs/BJCA_Global_Root_CA1.pem : /usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA1.crt
+100% 1322 - ssl/certs/BJCA_Global_Root_CA2.pem                                              ERROR: Dangerous link path was ignored : ssl/certs/BJCA_Global_Root_CA2.pem : /usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA2.crt
+100% 1323 - ssl/certs/Buypass_Class_2_Root_CA.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/Buypass_Class_2_Root_CA.pem : /usr/share/ca-certificates/mozilla/Buypass_Class_2_Root_CA.crt
+100% 1324 - ssl/certs/Buypass_Class_3_Root_CA.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/Buypass_Class_3_Root_CA.pem : /usr/share/ca-certificates/mozilla/Buypass_Class_3_Root_CA.crt
+100% 1325 - ssl/certs/CA_Disig_Root_R2.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/CA_Disig_Root_R2.pem : /usr/share/ca-certificates/mozilla/CA_Disig_Root_R2.crt
+100% 1326 - ssl/certs/CFCA_EV_ROOT.pem                                      ERROR: Dangerous link path was ignored : ssl/certs/CFCA_EV_ROOT.pem : /usr/share/ca-certificates/mozilla/CFCA_EV_ROOT.crt
+100% 1327 - ssl/certs/COMODO_ECC_Certification_Authority.pem                                                            ERROR: Dangerous link path was ignored : ssl/certs/COMODO_ECC_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/COMODO_ECC_Certification_Authority.crt
+100% 1328 - ssl/certs/COMODO_RSA_Certification_Authority.pem                                                            ERROR: Dangerous link path was ignored : ssl/certs/COMODO_RSA_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/COMODO_RSA_Certification_Authority.crt
+100% 1329 - ssl/certs/Certainly_Root_E1.pem                                           ERROR: Dangerous link path was ignored : ssl/certs/Certainly_Root_E1.pem : /usr/share/ca-certificates/mozilla/Certainly_Root_E1.crt
+100% 1330 - ssl/certs/Certainly_Root_R1.pem                                           ERROR: Dangerous link path was ignored : ssl/certs/Certainly_Root_R1.pem : /usr/share/ca-certificates/mozilla/Certainly_Root_R1.crt
+100% 1331 - ssl/certs/Certigna_Root_CA.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Certigna_Root_CA.pem : /usr/share/ca-certificates/mozilla/Certigna_Root_CA.crt
+100% 1332 - ssl/certs/Certum_EC-384_CA.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Certum_EC-384_CA.pem : /usr/share/ca-certificates/mozilla/Certum_EC-384_CA.crt
+100% 1333 - ssl/certs/Certum_Trusted_Network_CA.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/Certum_Trusted_Network_CA.pem : /usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt
+100% 1334 - ssl/certs/Certum_Trusted_Network_CA_2.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/Certum_Trusted_Network_CA_2.pem : /usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA_2.crt
+100% 1335 - ssl/certs/Certum_Trusted_Root_CA.pem                                                ERROR: Dangerous link path was ignored : ssl/certs/Certum_Trusted_Root_CA.pem : /usr/share/ca-certificates/mozilla/Certum_Trusted_Root_CA.crt
+100% 1336 - ssl/certs/D-TRUST_BR_Root_CA_1_2020.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/D-TRUST_BR_Root_CA_1_2020.pem : /usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_1_2020.crt
+100% 1337 - ssl/certs/D-TRUST_BR_Root_CA_2_2023.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/D-TRUST_BR_Root_CA_2_2023.pem : /usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_2_2023.crt
+100% 1338 - ssl/certs/D-TRUST_EV_Root_CA_1_2020.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/D-TRUST_EV_Root_CA_1_2020.pem : /usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_1_2020.crt
+100% 1339 - ssl/certs/D-TRUST_EV_Root_CA_2_2023.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/D-TRUST_EV_Root_CA_2_2023.pem : /usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_2_2023.crt
+100% 1340 - ssl/certs/D-TRUST_Root_Class_3_CA_2_2009.pem                                                        ERROR: Dangerous link path was ignored : ssl/certs/D-TRUST_Root_Class_3_CA_2_2009.pem : /usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_2009.crt
+100% 1341 - ssl/certs/D-TRUST_Root_Class_3_CA_2_EV_2009.pem                                                           ERROR: Dangerous link path was ignored : ssl/certs/D-TRUST_Root_Class_3_CA_2_EV_2009.pem : /usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_EV_2009.crt
+100% 1342 - ssl/certs/DigiCert_Assured_ID_Root_G2.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_Assured_ID_Root_G2.pem : /usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G2.crt
+100% 1343 - ssl/certs/DigiCert_Assured_ID_Root_G3.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_Assured_ID_Root_G3.pem : /usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G3.crt
+100% 1344 - ssl/certs/DigiCert_Global_Root_G2.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_Global_Root_G2.pem : /usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G2.crt
+100% 1345 - ssl/certs/DigiCert_Global_Root_G3.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_Global_Root_G3.pem : /usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G3.crt
+100% 1346 - ssl/certs/DigiCert_TLS_ECC_P384_Root_G5.pem                                                       ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_TLS_ECC_P384_Root_G5.pem : /usr/share/ca-certificates/mozilla/DigiCert_TLS_ECC_P384_Root_G5.crt
+100% 1347 - ssl/certs/DigiCert_TLS_RSA4096_Root_G5.pem                                                      ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_TLS_RSA4096_Root_G5.pem : /usr/share/ca-certificates/mozilla/DigiCert_TLS_RSA4096_Root_G5.crt
+100% 1348 - ssl/certs/DigiCert_Trusted_Root_G4.pem                                                  ERROR: Dangerous link path was ignored : ssl/certs/DigiCert_Trusted_Root_G4.pem : /usr/share/ca-certificates/mozilla/DigiCert_Trusted_Root_G4.crt
+100% 1349 - ssl/certs/Entrust_Root_Certification_Authority.pem                                                              ERROR: Dangerous link path was ignored : ssl/certs/Entrust_Root_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority.crt
+100% 1350 - ssl/certs/GDCA_TrustAUTH_R5_ROOT.pem                                                ERROR: Dangerous link path was ignored : ssl/certs/GDCA_TrustAUTH_R5_ROOT.pem : /usr/share/ca-certificates/mozilla/GDCA_TrustAUTH_R5_ROOT.crt
+100% 1351 - ssl/certs/GTS_Root_R1.pem                                     ERROR: Dangerous link path was ignored : ssl/certs/GTS_Root_R1.pem : /usr/share/ca-certificates/mozilla/GTS_Root_R1.crt
+100% 1352 - ssl/certs/GTS_Root_R3.pem                                     ERROR: Dangerous link path was ignored : ssl/certs/GTS_Root_R3.pem : /usr/share/ca-certificates/mozilla/GTS_Root_R3.crt
+100% 1353 - ssl/certs/GTS_Root_R4.pem                                     ERROR: Dangerous link path was ignored : ssl/certs/GTS_Root_R4.pem : /usr/share/ca-certificates/mozilla/GTS_Root_R4.crt
+100% 1354 - ssl/certs/GlobalSign_ECC_Root_CA_-_R4.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/GlobalSign_ECC_Root_CA_-_R4.pem : /usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R4.crt
+100% 1355 - ssl/certs/GlobalSign_ECC_Root_CA_-_R5.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/GlobalSign_ECC_Root_CA_-_R5.pem : /usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R5.crt
+100% 1356 - ssl/certs/GlobalSign_Root_CA_-_R3.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/GlobalSign_Root_CA_-_R3.pem : /usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R3.crt
+100% 1357 - ssl/certs/GlobalSign_Root_CA_-_R6.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/GlobalSign_Root_CA_-_R6.pem : /usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R6.crt
+100% 1358 - ssl/certs/GlobalSign_Root_E46.pem                                             ERROR: Dangerous link path was ignored : ssl/certs/GlobalSign_Root_E46.pem : /usr/share/ca-certificates/mozilla/GlobalSign_Root_E46.crt
+100% 1359 - ssl/certs/GlobalSign_Root_R46.pem                                             ERROR: Dangerous link path was ignored : ssl/certs/GlobalSign_Root_R46.pem : /usr/share/ca-certificates/mozilla/GlobalSign_Root_R46.crt
+100% 1360 - ssl/certs/Go_Daddy_Root_Certificate_Authority_-_G2.pem                                                                  ERROR: Dangerous link path was ignored : ssl/certs/Go_Daddy_Root_Certificate_Authority_-_G2.pem : /usr/share/ca-certificates/mozilla/Go_Daddy_Root_Certificate_Authority_-_G2.crt
+100% 1361 - ssl/certs/HARICA_TLS_ECC_Root_CA_2021.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/HARICA_TLS_ECC_Root_CA_2021.pem : /usr/share/ca-certificates/mozilla/HARICA_TLS_ECC_Root_CA_2021.crt
+100% 1362 - ssl/certs/HARICA_TLS_RSA_Root_CA_2021.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/HARICA_TLS_RSA_Root_CA_2021.pem : /usr/share/ca-certificates/mozilla/HARICA_TLS_RSA_Root_CA_2021.crt
+100% 1363 - ssl/certs/Hellenic_Academic_and_ . Institutions_ECC_RootCA_2015.pem                                                                               ERROR: Dangerous link path was ignored : ssl/certs/Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem : /usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.crt
+100% 1364 - ssl/certs/Hellenic_Academic_an . ch_Institutions_RootCA_2015.pem                                                                            ERROR: Dangerous link path was ignored : ssl/certs/Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem : /usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_RootCA_2015.crt
+100% 1365 - ssl/certs/HiPKI_Root_CA_-_G1.pem                                            ERROR: Dangerous link path was ignored : ssl/certs/HiPKI_Root_CA_-_G1.pem : /usr/share/ca-certificates/mozilla/HiPKI_Root_CA_-_G1.crt
+100% 1366 - ssl/certs/Hongkong_Post_Root_CA_3.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/Hongkong_Post_Root_CA_3.pem : /usr/share/ca-certificates/mozilla/Hongkong_Post_Root_CA_3.crt
+100% 1367 - ssl/certs/ISRG_Root_X1.pem                                      ERROR: Dangerous link path was ignored : ssl/certs/ISRG_Root_X1.pem : /usr/share/ca-certificates/mozilla/ISRG_Root_X1.crt
+100% 1368 - ssl/certs/ISRG_Root_X2.pem                                      ERROR: Dangerous link path was ignored : ssl/certs/ISRG_Root_X2.pem : /usr/share/ca-certificates/mozilla/ISRG_Root_X2.crt
+100% 1369 - ssl/certs/IdenTrust_Commercial_Root_CA_1.pem                                                        ERROR: Dangerous link path was ignored : ssl/certs/IdenTrust_Commercial_Root_CA_1.pem : /usr/share/ca-certificates/mozilla/IdenTrust_Commercial_Root_CA_1.crt
+100% 1370 - ssl/certs/IdenTrust_Public_Sector_Root_CA_1.pem                                                           ERROR: Dangerous link path was ignored : ssl/certs/IdenTrust_Public_Sector_Root_CA_1.pem : /usr/share/ca-certificates/mozilla/IdenTrust_Public_Sector_Root_CA_1.crt
+100% 1371 - ssl/certs/Izenpe.com.pem                                    ERROR: Dangerous link path was ignored : ssl/certs/Izenpe.com.pem : /usr/share/ca-certificates/mozilla/Izenpe.com.crt
+100% 1372 - ssl/certs/Microsec_e-Szigno_Root_CA_2009.pem                                                        ERROR: Dangerous link path was ignored : ssl/certs/Microsec_e-Szigno_Root_CA_2009.pem : /usr/share/ca-certificates/mozilla/Microsec_e-Szigno_Root_CA_2009.crt
+100% 1373 - ssl/certs/Microsoft_ECC_Root_Certificate_Authority_2017.pem                                                                       ERROR: Dangerous link path was ignored : ssl/certs/Microsoft_ECC_Root_Certificate_Authority_2017.pem : /usr/share/ca-certificates/mozilla/Microsoft_ECC_Root_Certificate_Authority_2017.crt
+100% 1374 - ssl/certs/Microsoft_RSA_Root_Certificate_Authority_2017.pem                                                                       ERROR: Dangerous link path was ignored : ssl/certs/Microsoft_RSA_Root_Certificate_Authority_2017.pem : /usr/share/ca-certificates/mozilla/Microsoft_RSA_Root_Certificate_Authority_2017.crt
+100% 1375 - ssl/certs/NAVER_Global_Root_Certification_Authority.pem                                                                   ERROR: Dangerous link path was ignored : ssl/certs/NAVER_Global_Root_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/NAVER_Global_Root_Certification_Authority.crt
+100% 1376 - ssl/certs/NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem                                                                      ERROR: Dangerous link path was ignored : ssl/certs/NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem : /usr/share/ca-certificates/mozilla/NetLock_Arany_=Class_Gold=_Főtanúsítvány.crt
+100% 1377 - ssl/certs/OISTE_Server_Root_ECC_G1.pem                                                  ERROR: Dangerous link path was ignored : ssl/certs/OISTE_Server_Root_ECC_G1.pem : /usr/share/ca-certificates/mozilla/OISTE_Server_Root_ECC_G1.crt
+100% 1378 - ssl/certs/OISTE_Server_Root_RSA_G1.pem                                                  ERROR: Dangerous link path was ignored : ssl/certs/OISTE_Server_Root_RSA_G1.pem : /usr/share/ca-certificates/mozilla/OISTE_Server_Root_RSA_G1.crt
+100% 1379 - ssl/certs/OISTE_WISeKey_Global_Root_GB_CA.pem                                                         ERROR: Dangerous link path was ignored : ssl/certs/OISTE_WISeKey_Global_Root_GB_CA.pem : /usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GB_CA.crt
+100% 1380 - ssl/certs/OISTE_WISeKey_Global_Root_GC_CA.pem                                                         ERROR: Dangerous link path was ignored : ssl/certs/OISTE_WISeKey_Global_Root_GC_CA.pem : /usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GC_CA.crt
+100% 1381 - ssl/certs/QuoVadis_Root_CA_1_G3.pem                                               ERROR: Dangerous link path was ignored : ssl/certs/QuoVadis_Root_CA_1_G3.pem : /usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_1_G3.crt
+100% 1382 - ssl/certs/QuoVadis_Root_CA_2_G3.pem                                               ERROR: Dangerous link path was ignored : ssl/certs/QuoVadis_Root_CA_2_G3.pem : /usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2_G3.crt
+100% 1383 - ssl/certs/QuoVadis_Root_CA_3_G3.pem                                               ERROR: Dangerous link path was ignored : ssl/certs/QuoVadis_Root_CA_3_G3.pem : /usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3_G3.crt
+100% 1384 - ssl/certs/SSL.com_EV_Root_Certification_Authority_ECC.pem                                                                     ERROR: Dangerous link path was ignored : ssl/certs/SSL.com_EV_Root_Certification_Authority_ECC.pem : /usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_ECC.crt
+100% 1385 - ssl/certs/SSL.com_EV_Root_Certification_Authority_RSA_R2.pem                                                                        ERROR: Dangerous link path was ignored : ssl/certs/SSL.com_EV_Root_Certification_Authority_RSA_R2.pem : /usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_RSA_R2.crt
+100% 1386 - ssl/certs/SSL.com_Root_Certification_Authority_ECC.pem                                                                  ERROR: Dangerous link path was ignored : ssl/certs/SSL.com_Root_Certification_Authority_ECC.pem : /usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_ECC.crt
+100% 1387 - ssl/certs/SSL.com_Root_Certification_Authority_RSA.pem                                                                  ERROR: Dangerous link path was ignored : ssl/certs/SSL.com_Root_Certification_Authority_RSA.pem : /usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_RSA.crt
+100% 1388 - ssl/certs/SSL.com_TLS_ECC_Root_CA_2022.pem                                                      ERROR: Dangerous link path was ignored : ssl/certs/SSL.com_TLS_ECC_Root_CA_2022.pem : /usr/share/ca-certificates/mozilla/SSL.com_TLS_ECC_Root_CA_2022.crt
+100% 1389 - ssl/certs/SSL.com_TLS_RSA_Root_CA_2022.pem                                                      ERROR: Dangerous link path was ignored : ssl/certs/SSL.com_TLS_RSA_Root_CA_2022.pem : /usr/share/ca-certificates/mozilla/SSL.com_TLS_RSA_Root_CA_2022.crt
+100% 1390 - ssl/certs/SZAFIR_ROOT_CA2.pem                                         ERROR: Dangerous link path was ignored : ssl/certs/SZAFIR_ROOT_CA2.pem : /usr/share/ca-certificates/mozilla/SZAFIR_ROOT_CA2.crt
+100% 1391 - ssl/certs/Sectigo_Public_Server_Authentication_Root_E46.pem                                                                       ERROR: Dangerous link path was ignored : ssl/certs/Sectigo_Public_Server_Authentication_Root_E46.pem : /usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_E46.crt
+100% 1392 - ssl/certs/Sectigo_Public_Server_Authentication_Root_R46.pem                                                                       ERROR: Dangerous link path was ignored : ssl/certs/Sectigo_Public_Server_Authentication_Root_R46.pem : /usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_R46.crt
+100% 1393 - ssl/certs/SecureSign_Root_CA12.pem                                              ERROR: Dangerous link path was ignored : ssl/certs/SecureSign_Root_CA12.pem : /usr/share/ca-certificates/mozilla/SecureSign_Root_CA12.crt
+100% 1394 - ssl/certs/SecureSign_Root_CA14.pem                                              ERROR: Dangerous link path was ignored : ssl/certs/SecureSign_Root_CA14.pem : /usr/share/ca-certificates/mozilla/SecureSign_Root_CA14.crt
+100% 1395 - ssl/certs/SecureSign_Root_CA15.pem                                              ERROR: Dangerous link path was ignored : ssl/certs/SecureSign_Root_CA15.pem : /usr/share/ca-certificates/mozilla/SecureSign_Root_CA15.crt
+100% 1396 - ssl/certs/Security_Communication_ECC_RootCA1.pem                                                            ERROR: Dangerous link path was ignored : ssl/certs/Security_Communication_ECC_RootCA1.pem : /usr/share/ca-certificates/mozilla/Security_Communication_ECC_RootCA1.crt
+100% 1397 - ssl/certs/Security_Communication_RootCA2.pem                                                        ERROR: Dangerous link path was ignored : ssl/certs/Security_Communication_RootCA2.pem : /usr/share/ca-certificates/mozilla/Security_Communication_RootCA2.crt
+100% 1398 - ssl/certs/Starfield_Root_Certificate_Authority_-_G2.pem                                                                   ERROR: Dangerous link path was ignored : ssl/certs/Starfield_Root_Certificate_Authority_-_G2.pem : /usr/share/ca-certificates/mozilla/Starfield_Root_Certificate_Authority_-_G2.crt
+100% 1399 - ssl/certs/Starfield_Services_Root_Certificate_Authority_-_G2.pem                                                                            ERROR: Dangerous link path was ignored : ssl/certs/Starfield_Services_Root_Certificate_Authority_-_G2.pem : /usr/share/ca-certificates/mozilla/Starfield_Services_Root_Certificate_Authority_-_G2.crt
+100% 1400 - ssl/certs/SwissSign_RSA_TLS_Root_CA_2022_-_1.pem                                                            ERROR: Dangerous link path was ignored : ssl/certs/SwissSign_RSA_TLS_Root_CA_2022_-_1.pem : /usr/share/ca-certificates/mozilla/SwissSign_RSA_TLS_Root_CA_2022_-_1.crt
+100% 1401 - ssl/certs/T-TeleSec_GlobalRoot_Class_2.pem                                                      ERROR: Dangerous link path was ignored : ssl/certs/T-TeleSec_GlobalRoot_Class_2.pem : /usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_2.crt
+100% 1402 - ssl/certs/T-TeleSec_GlobalRoot_Class_3.pem                                                      ERROR: Dangerous link path was ignored : ssl/certs/T-TeleSec_GlobalRoot_Class_3.pem : /usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_3.crt
+100% 1403 - ssl/certs/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem                                                                       ERROR: Dangerous link path was ignored : ssl/certs/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem : /usr/share/ca-certificates/mozilla/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.crt
+100% 1404 - ssl/certs/TWCA_CYBER_Root_CA.pem                                            ERROR: Dangerous link path was ignored : ssl/certs/TWCA_CYBER_Root_CA.pem : /usr/share/ca-certificates/mozilla/TWCA_CYBER_Root_CA.crt
+100% 1405 - ssl/certs/TWCA_Global_Root_CA.pem                                             ERROR: Dangerous link path was ignored : ssl/certs/TWCA_Global_Root_CA.pem : /usr/share/ca-certificates/mozilla/TWCA_Global_Root_CA.crt
+100% 1406 - ssl/certs/TWCA_Root_Certification_Authority.pem                                                           ERROR: Dangerous link path was ignored : ssl/certs/TWCA_Root_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/TWCA_Root_Certification_Authority.crt
+100% 1407 - ssl/certs/Telekom_Security_TLS_ECC_Root_2020.pem                                                            ERROR: Dangerous link path was ignored : ssl/certs/Telekom_Security_TLS_ECC_Root_2020.pem : /usr/share/ca-certificates/mozilla/Telekom_Security_TLS_ECC_Root_2020.crt
+100% 1408 - ssl/certs/Telekom_Security_TLS_RSA_Root_2023.pem                                                            ERROR: Dangerous link path was ignored : ssl/certs/Telekom_Security_TLS_RSA_Root_2023.pem : /usr/share/ca-certificates/mozilla/Telekom_Security_TLS_RSA_Root_2023.crt
+100% 1409 - ssl/certs/Telia_Root_CA_v2.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/Telia_Root_CA_v2.pem : /usr/share/ca-certificates/mozilla/Telia_Root_CA_v2.crt
+100% 1410 - ssl/certs/TrustAsia_Global_Root_CA_G3.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/TrustAsia_Global_Root_CA_G3.pem : /usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G3.crt
+100% 1411 - ssl/certs/TrustAsia_Global_Root_CA_G4.pem                                                     ERROR: Dangerous link path was ignored : ssl/certs/TrustAsia_Global_Root_CA_G4.pem : /usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G4.crt
+100% 1412 - ssl/certs/TrustAsia_TLS_ECC_Root_CA.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/TrustAsia_TLS_ECC_Root_CA.pem : /usr/share/ca-certificates/mozilla/TrustAsia_TLS_ECC_Root_CA.crt
+100% 1413 - ssl/certs/TrustAsia_TLS_RSA_Root_CA.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/TrustAsia_TLS_RSA_Root_CA.pem : /usr/share/ca-certificates/mozilla/TrustAsia_TLS_RSA_Root_CA.crt
+100% 1414 - ssl/certs/TunTrust_Root_CA.pem                                          ERROR: Dangerous link path was ignored : ssl/certs/TunTrust_Root_CA.pem : /usr/share/ca-certificates/mozilla/TunTrust_Root_CA.crt
+100% 1415 - ssl/certs/UCA_Extended_Validation_Root.pem                                                      ERROR: Dangerous link path was ignored : ssl/certs/UCA_Extended_Validation_Root.pem : /usr/share/ca-certificates/mozilla/UCA_Extended_Validation_Root.crt
+100% 1416 - ssl/certs/UCA_Global_G2_Root.pem                                            ERROR: Dangerous link path was ignored : ssl/certs/UCA_Global_G2_Root.pem : /usr/share/ca-certificates/mozilla/UCA_Global_G2_Root.crt
+100% 1417 - ssl/certs/USERTrust_ECC_Certification_Authority.pem                                                               ERROR: Dangerous link path was ignored : ssl/certs/USERTrust_ECC_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/USERTrust_ECC_Certification_Authority.crt
+100% 1418 - ssl/certs/USERTrust_RSA_Certification_Authority.pem                                                               ERROR: Dangerous link path was ignored : ssl/certs/USERTrust_RSA_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/USERTrust_RSA_Certification_Authority.crt
+100% 1419 - ssl/certs/a09a51ae.0                                ERROR: Dangerous link path was ignored : ssl/certs/certSIGN_Root_CA_G2.pem : /usr/share/ca-certificates/mozilla/certSIGN_Root_CA_G2.crt
+100% 1440 - ssl/certs/d4dae3dd.0                                ERROR: Dangerous link path was ignored : ssl/certs/e-Szigno_Root_CA_2017.pem : /usr/share/ca-certificates/mozilla/e-Szigno_Root_CA_2017.crt
+100% 1449 - ssl/certs/e-Szigno_TLS_Root_CA_2023.pem                                                   ERROR: Dangerous link path was ignored : ssl/certs/e-Szigno_TLS_Root_CA_2023.pem : /usr/share/ca-certificates/mozilla/e-Szigno_TLS_Root_CA_2023.crt
+100% 1450 - ssl/certs/e18bfb83.0                                ERROR: Dangerous link path was ignored : ssl/certs/ePKI_Root_Certification_Authority.pem : /usr/share/ca-certificates/mozilla/ePKI_Root_Certification_Authority.crt
+100% 1457 - ssl/certs/ecccd8db.0                                ERROR: Dangerous link path was ignored : ssl/certs/emSign_ECC_Root_CA_-_C3.pem : /usr/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_C3.crt
+100% 1462 - ssl/certs/emSign_ECC_Root_CA_-_G3.pem                                                 ERROR: Dangerous link path was ignored : ssl/certs/emSign_ECC_Root_CA_-_G3.pem : /usr/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_G3.crt
+100% 1463 - ssl/certs/emSign_Root_CA_-_C1.pem                                             ERROR: Dangerous link path was ignored : ssl/certs/emSign_Root_CA_-_C1.pem : /usr/share/ca-certificates/mozilla/emSign_Root_CA_-_C1.crt
+100% 1464 - ssl/certs/emSign_Root_CA_-_G1.pem                                             ERROR: Dangerous link path was ignored : ssl/certs/emSign_Root_CA_-_G1.pem : /usr/share/ca-certificates/mozilla/emSign_Root_CA_-_G1.crt
+100% 1465 - ssl/certs/f0c70a8d.0                                ERROR: Dangerous link path was ignored : ssl/certs/vTrus_ECC_Root_CA.pem : /usr/share/ca-certificates/mozilla/vTrus_ECC_Root_CA.crt
+100% 1477 - ssl/certs/vTrus_Root_CA.pem                                       ERROR: Dangerous link path was ignored : ssl/certs/vTrus_Root_CA.pem : /usr/share/ca-certificates/mozilla/vTrus_Root_CA.crt
+100% 1478 - ssl/openssl.cnf                           ERROR: Dangerous symbolic link path was ignored : sysctl.d/99-sysctl.conf : ../sysctl.conf
+100% 1501 - sysctl.d/README.sysctl                                  ERROR: Dangerous link path was ignored : systemd/system/cloud-config.target.wants/cloud-init-hotplugd.socket : /usr/lib/systemd/system/cloud-init-hotplugd.socket
+100% 1511 - systemd/system/cloud-final.service.wants/snapd.seeded.service                                                                         ERROR: Dangerous link path was ignored : systemd/system/cloud-final.service.wants/snapd.seeded.service : /usr/lib/systemd/system/snapd.seeded.service
+100% 1512 - systemd/system/cloud-init.target.wants/cloud-config.service                                                                       ERROR: Dangerous link path was ignored : systemd/system/cloud-init.target.wants/cloud-config.service : /usr/lib/systemd/system/cloud-config.service
+100% 1513 - systemd/system/cloud-init.target.wants/cloud-final.service                                                                      ERROR: Dangerous link path was ignored : systemd/system/cloud-init.target.wants/cloud-final.service : /usr/lib/systemd/system/cloud-final.service
+100% 1514 - systemd/system/cloud-init.target.wants/cloud-init-local.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/cloud-init.target.wants/cloud-init-local.service : /usr/lib/systemd/system/cloud-init-local.service
+100% 1515 - systemd/system/cloud-init.target.wants/cloud-init.service                                                                     ERROR: Dangerous link path was ignored : systemd/system/cloud-init.target.wants/cloud-init.service : /usr/lib/systemd/system/cloud-init.service
+100% 1516 - systemd/system/dbus-org.freedesktop.ModemManager1.service                                                                     ERROR: Dangerous link path was ignored : systemd/system/dbus-org.freedesktop.ModemManager1.service : /usr/lib/systemd/system/ModemManager.service
+100% 1517 - systemd/system/dbus-org.freedesktop.resolve1.service                                                                ERROR: Dangerous link path was ignored : systemd/system/dbus-org.freedesktop.resolve1.service : /usr/lib/systemd/system/systemd-resolved.service
+100% 1518 - systemd/system/dbus-org.freedesktop.thermald.service                                                                ERROR: Dangerous link path was ignored : systemd/system/dbus-org.freedesktop.thermald.service : /usr/lib/systemd/system/thermald.service
+100% 1519 - systemd/system/dbus-org.freedesktop.timesync1.service                                                                 ERROR: Dangerous link path was ignored : systemd/system/dbus-org.freedesktop.timesync1.service : /usr/lib/systemd/system/systemd-timesyncd.service
+100% 1520 - systemd/system/display-manager.service.wants/gpu-manager.service                                                                            ERROR: Dangerous link path was ignored : systemd/system/display-manager.service.wants/gpu-manager.service : /usr/lib/systemd/system/gpu-manager.service
+100% 1521 - systemd/system/emergency.target.wants/grub-initrd-fallback.service                                                                              ERROR: Dangerous link path was ignored : systemd/system/emergency.target.wants/grub-initrd-fallback.service : /usr/lib/systemd/system/grub-initrd-fallback.service
+100% 1522 - systemd/system/final.target.wants/snapd.system-shutdown.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/final.target.wants/snapd.system-shutdown.service : /usr/lib/systemd/system/snapd.system-shutdown.service
+100% 1523 - systemd/system/getty.target.wants/getty@tty1.service                                                                ERROR: Dangerous link path was ignored : systemd/system/getty.target.wants/getty@tty1.service : /usr/lib/systemd/system/getty@.service
+100% 1524 - systemd/system/graphical.target.wants/udisks2.service                                                                 ERROR: Dangerous link path was ignored : systemd/system/graphical.target.wants/udisks2.service : /usr/lib/systemd/system/udisks2.service
+100% 1525 - systemd/system/hibernate.target.wants/grub-common.service                                                                     ERROR: Dangerous link path was ignored : systemd/system/hibernate.target.wants/grub-common.service : /usr/lib/systemd/system/grub-common.service
+100% 1526 - systemd/system/hybrid-sleep.target.wants/grub-common.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/hybrid-sleep.target.wants/grub-common.service : /usr/lib/systemd/system/grub-common.service
+100% 1527 - systemd/system/iscsi.service                                        ERROR: Dangerous link path was ignored : systemd/system/iscsi.service : /usr/lib/systemd/system/open-iscsi.service
+100% 1528 - systemd/system/mdmonitor.service.wants/mdcheck_continue.timer                                                                         ERROR: Dangerous link path was ignored : systemd/system/mdmonitor.service.wants/mdcheck_continue.timer : /usr/lib/systemd/system/mdcheck_continue.timer
+100% 1529 - systemd/system/mdmonitor.service.wants/mdcheck_start.timer                                                                      ERROR: Dangerous link path was ignored : systemd/system/mdmonitor.service.wants/mdcheck_start.timer : /usr/lib/systemd/system/mdcheck_start.timer
+100% 1530 - systemd/system/mdmonitor.service.wants/mdmonitor-oneshot.timer                                                                          ERROR: Dangerous link path was ignored : systemd/system/mdmonitor.service.wants/mdmonitor-oneshot.timer : /usr/lib/systemd/system/mdmonitor-oneshot.timer
+100% 1531 - systemd/system/multi-user.target.wants/ModemManager.service                                                                       ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/ModemManager.service : /usr/lib/systemd/system/ModemManager.service
+100% 1532 - systemd/system/multi-user.target.wants/apport.service                                                                 ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/apport.service : /usr/lib/systemd/system/apport.service
+100% 1533 - systemd/system/multi-user.target.wants/console-setup.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/console-setup.service : /usr/lib/systemd/system/console-setup.service
+100% 1534 - systemd/system/multi-user.target.wants/cron.service                                                               ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/cron.service : /usr/lib/systemd/system/cron.service
+100% 1535 - systemd/system/multi-user.target.wants/dmesg.service                                                                ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/dmesg.service : /usr/lib/systemd/system/dmesg.service
+100% 1536 - systemd/system/multi-user.target.wants/e2scrub_reap.service                                                                       ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/e2scrub_reap.service : /lib/systemd/system/e2scrub_reap.service
+100% 1537 - systemd/system/multi-user.target.wants/grub-common.service                                                                      ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/grub-common.service : /usr/lib/systemd/system/grub-common.service
+100% 1538 - systemd/system/multi-user.target.wants/grub-initrd-fallback.service                                                                               ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/grub-initrd-fallback.service : /usr/lib/systemd/system/grub-initrd-fallback.service
+100% 1539 - systemd/system/multi-user.target.wants/lxd-installer.socket                                                                       ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/lxd-installer.socket : /usr/lib/systemd/system/lxd-installer.socket
+100% 1540 - systemd/system/multi-user.target.wants/networkd-dispatcher.service                                                                              ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/networkd-dispatcher.service : /usr/lib/systemd/system/networkd-dispatcher.service
+100% 1541 - systemd/system/multi-user.target.wants/open-vm-tools.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/open-vm-tools.service : /usr/lib/systemd/system/open-vm-tools.service
+100% 1542 - systemd/system/multi-user.target.wants/pollinate.service                                                                    ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/pollinate.service : /usr/lib/systemd/system/pollinate.service
+100% 1543 - systemd/system/multi-user.target.wants/remote-fs.target                                                                   ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/remote-fs.target : /usr/lib/systemd/system/remote-fs.target
+100% 1544 - systemd/system/multi-user.target.wants/rsyslog.service                                                                  ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/rsyslog.service : /usr/lib/systemd/system/rsyslog.service
+100% 1545 - systemd/system/multi-user.target.wants/secureboot-db.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/secureboot-db.service : /usr/lib/systemd/system/secureboot-db.service
+100% 1546 - systemd/system/multi-user.target.wants/snapd.apparmor.service                                                                         ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/snapd.apparmor.service : /usr/lib/systemd/system/snapd.apparmor.service
+100% 1547 - systemd/system/multi-user.target.wants/snapd.autoimport.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/snapd.autoimport.service : /usr/lib/systemd/system/snapd.autoimport.service
+100% 1548 - systemd/system/multi-user.target.wants/snapd.core-fixup.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/snapd.core-fixup.service : /usr/lib/systemd/system/snapd.core-fixup.service
+100% 1549 - systemd/system/multi-user.targ . covery-chooser-trigger.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/snapd.recovery-chooser-trigger.service : /usr/lib/systemd/system/snapd.recovery-chooser-trigger.service
+100% 1550 - systemd/system/multi-user.target.wants/snapd.seeded.service                                                                       ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/snapd.seeded.service : /usr/lib/systemd/system/snapd.seeded.service
+100% 1551 - systemd/system/multi-user.target.wants/snapd.service                                                                ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/snapd.service : /usr/lib/systemd/system/snapd.service
+100% 1552 - systemd/system/multi-user.target.wants/sysstat.service                                                                  ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/sysstat.service : /usr/lib/systemd/system/sysstat.service
+100% 1553 - systemd/system/multi-user.target.wants/systemd-networkd.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/systemd-networkd.service : /lib/systemd/system/systemd-networkd.service
+100% 1554 - systemd/system/multi-user.target.wants/thermald.service                                                                   ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/thermald.service : /usr/lib/systemd/system/thermald.service
+100% 1555 - systemd/system/multi-user.target.wants/ua-reboot-cmds.service                                                                         ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/ua-reboot-cmds.service : /usr/lib/systemd/system/ua-reboot-cmds.service
+100% 1556 - systemd/system/multi-user.target.wants/ubuntu-advantage.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/ubuntu-advantage.service : /usr/lib/systemd/system/ubuntu-advantage.service
+100% 1557 - systemd/system/multi-user.target.wants/ufw.service                                                              ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/ufw.service : /usr/lib/systemd/system/ufw.service
+100% 1558 - systemd/system/multi-user.target.wants/unattended-upgrades.service                                                                              ERROR: Dangerous link path was ignored : systemd/system/multi-user.target.wants/unattended-upgrades.service : /usr/lib/systemd/system/unattended-upgrades.service
+100% 1559 - systemd/system/network-online.t . md-networkd-wait-online.service                                                                             ERROR: Dangerous link path was ignored : systemd/system/network-online.target.wants/systemd-networkd-wait-online.service : /lib/systemd/system/systemd-networkd-wait-online.service
+100% 1560 - systemd/system/oem-config.service.wants/gpu-manager.service                                                                       ERROR: Dangerous link path was ignored : systemd/system/oem-config.service.wants/gpu-manager.service : /usr/lib/systemd/system/gpu-manager.service
+100% 1561 - systemd/system/open-vm-tools.service.requires/vgauth.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/open-vm-tools.service.requires/vgauth.service : /usr/lib/systemd/system/vgauth.service
+100% 1562 - systemd/system/paths.target.wants/apport-autoreport.path                                                                    ERROR: Dangerous link path was ignored : systemd/system/paths.target.wants/apport-autoreport.path : /usr/lib/systemd/system/apport-autoreport.path
+100% 1563 - systemd/system/paths.target.wants/tpm-udev.path                                                           ERROR: Dangerous link path was ignored : systemd/system/paths.target.wants/tpm-udev.path : /usr/lib/systemd/system/tpm-udev.path
+100% 1564 - systemd/system/rescue.target.wants/grub-initrd-fallback.service                                                                           ERROR: Dangerous link path was ignored : systemd/system/rescue.target.wants/grub-initrd-fallback.service : /usr/lib/systemd/system/grub-initrd-fallback.service
+100% 1565 - systemd/system/sleep.target.wants/grub-initrd-fallback.service                                                                          ERROR: Dangerous link path was ignored : systemd/system/sleep.target.wants/grub-initrd-fallback.service : /usr/lib/systemd/system/grub-initrd-fallback.service
+100% 1566 - systemd/system/sockets.target.wants/apport-forward.socket                                                                     ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/apport-forward.socket : /usr/lib/systemd/system/apport-forward.socket
+100% 1567 - systemd/system/sockets.target.wants/dm-event.socket                                                               ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/dm-event.socket : /usr/lib/systemd/system/dm-event.socket
+100% 1568 - systemd/system/sockets.target.wants/iscsid.socket                                                             ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/iscsid.socket : /usr/lib/systemd/system/iscsid.socket
+100% 1569 - systemd/system/sockets.target.wants/multipathd.socket                                                                 ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/multipathd.socket : /usr/lib/systemd/system/multipathd.socket
+100% 1570 - systemd/system/sockets.target.wants/snapd.socket                                                            ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/snapd.socket : /usr/lib/systemd/system/snapd.socket
+100% 1571 - systemd/system/sockets.target.wants/ssh.socket                                                          ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/ssh.socket : /usr/lib/systemd/system/ssh.socket
+100% 1572 - systemd/system/sockets.target.wants/systemd-networkd.socket                                                                       ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/systemd-networkd.socket : /lib/systemd/system/systemd-networkd.socket
+100% 1573 - systemd/system/sockets.target.wants/uuidd.socket                                                            ERROR: Dangerous link path was ignored : systemd/system/sockets.target.wants/uuidd.socket : /usr/lib/systemd/system/uuidd.socket
+100% 1574 - systemd/system/ssh.service.requires/ssh.socket                                                          ERROR: Dangerous link path was ignored : systemd/system/ssh.service.requires/ssh.socket : /usr/lib/systemd/system/ssh.socket
+100% 1575 - systemd/system/suspend-then-hib . arget.wants/grub-common.service                                                                             ERROR: Dangerous link path was ignored : systemd/system/suspend-then-hibernate.target.wants/grub-common.service : /usr/lib/systemd/system/grub-common.service
+100% 1576 - systemd/system/suspend.target.wants/grub-common.service                                                                   ERROR: Dangerous link path was ignored : systemd/system/suspend.target.wants/grub-common.service : /usr/lib/systemd/system/grub-common.service
+100% 1577 - systemd/system/sysinit.target.wants/apparmor.service                                                                ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/apparmor.service : /usr/lib/systemd/system/apparmor.service
+100% 1578 - systemd/system/sysinit.target.wants/blk-availability.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/blk-availability.service : /usr/lib/systemd/system/blk-availability.service
+100% 1579 - systemd/system/sysinit.target.wants/finalrd.service                                                               ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/finalrd.service : /usr/lib/systemd/system/finalrd.service
+100% 1580 - systemd/system/sysinit.target.wants/keyboard-setup.service                                                                      ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/keyboard-setup.service : /usr/lib/systemd/system/keyboard-setup.service
+100% 1581 - systemd/system/sysinit.target.wants/lvm2-lvmpolld.socket                                                                    ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/lvm2-lvmpolld.socket : /usr/lib/systemd/system/lvm2-lvmpolld.socket
+100% 1582 - systemd/system/sysinit.target.wants/lvm2-monitor.service                                                                    ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/lvm2-monitor.service : /usr/lib/systemd/system/lvm2-monitor.service
+100% 1583 - systemd/system/sysinit.target.wants/multipathd.service                                                                  ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/multipathd.service : /usr/lib/systemd/system/multipathd.service
+100% 1584 - systemd/system/sysinit.target.wants/open-iscsi.service                                                                  ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/open-iscsi.service : /usr/lib/systemd/system/open-iscsi.service
+100% 1585 - systemd/system/sysinit.target.wants/setvtrgb.service                                                                ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/setvtrgb.service : /usr/lib/systemd/system/setvtrgb.service
+100% 1586 - systemd/system/sysinit.target.wants/systemd-pstore.service                                                                      ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/systemd-pstore.service : /usr/lib/systemd/system/systemd-pstore.service
+100% 1587 - systemd/system/sysinit.target.wants/systemd-resolved.service                                                                        ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/systemd-resolved.service : /usr/lib/systemd/system/systemd-resolved.service
+100% 1588 - systemd/system/sysinit.target.wants/systemd-timesyncd.service                                                                         ERROR: Dangerous link path was ignored : systemd/system/sysinit.target.wants/systemd-timesyncd.service : /usr/lib/systemd/system/systemd-timesyncd.service
+100% 1589 - systemd/system/syslog.service                                         ERROR: Dangerous link path was ignored : systemd/system/syslog.service : /usr/lib/systemd/system/rsyslog.service
+100% 1590 - systemd/system/sysstat.service.wants/sysstat-collect.timer                                                                      ERROR: Dangerous link path was ignored : systemd/system/sysstat.service.wants/sysstat-collect.timer : /usr/lib/systemd/system/sysstat-collect.timer
+100% 1591 - systemd/system/sysstat.service.wants/sysstat-summary.timer                                                                      ERROR: Dangerous link path was ignored : systemd/system/sysstat.service.wants/sysstat-summary.timer : /usr/lib/systemd/system/sysstat-summary.timer
+100% 1592 - systemd/system/timers.target.wants/apport-autoreport.timer                                                                      ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/apport-autoreport.timer : /usr/lib/systemd/system/apport-autoreport.timer
+100% 1593 - systemd/system/timers.target.wants/apt-daily-upgrade.timer                                                                      ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/apt-daily-upgrade.timer : /lib/systemd/system/apt-daily-upgrade.timer
+100% 1594 - systemd/system/timers.target.wants/apt-daily.timer                                                              ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/apt-daily.timer : /lib/systemd/system/apt-daily.timer
+100% 1595 - systemd/system/timers.target.wants/dpkg-db-backup.timer                                                                   ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/dpkg-db-backup.timer : /lib/systemd/system/dpkg-db-backup.timer
+100% 1596 - systemd/system/timers.target.wants/e2scrub_all.timer                                                                ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/e2scrub_all.timer : /lib/systemd/system/e2scrub_all.timer
+100% 1597 - systemd/system/timers.target.wants/fstrim.timer                                                           ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/fstrim.timer : /lib/systemd/system/fstrim.timer
+100% 1598 - systemd/system/timers.target.wants/fwupd-refresh.timer                                                                  ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/fwupd-refresh.timer : /usr/lib/systemd/system/fwupd-refresh.timer
+100% 1599 - systemd/system/timers.target.wants/logrotate.timer                                                              ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/logrotate.timer : /usr/lib/systemd/system/logrotate.timer
+100% 1600 - systemd/system/timers.target.wants/man-db.timer                                                           ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/man-db.timer : /usr/lib/systemd/system/man-db.timer
+100% 1601 - systemd/system/timers.target.wants/motd-news.timer                                                              ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/motd-news.timer : /lib/systemd/system/motd-news.timer
+100% 1602 - systemd/system/timers.target.wants/snapd.snap-repair.timer                                                                      ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/snapd.snap-repair.timer : /usr/lib/systemd/system/snapd.snap-repair.timer
+100% 1603 - systemd/system/timers.target.wants/ua-timer.timer                                                             ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/ua-timer.timer : /usr/lib/systemd/system/ua-timer.timer
+100% 1604 - systemd/system/timers.target.wants/update-notifier-download.timer                                                                             ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/update-notifier-download.timer : /usr/lib/systemd/system/update-notifier-download.timer
+100% 1605 - systemd/system/timers.target.wants/update-notifier-motd.timer                                                                         ERROR: Dangerous link path was ignored : systemd/system/timers.target.wants/update-notifier-motd.timer : /usr/lib/systemd/system/update-notifier-motd.timer
+100% 1606 - systemd/system/vmtoolsd.service                                           ERROR: Dangerous link path was ignored : systemd/system/vmtoolsd.service : /usr/lib/systemd/system/open-vm-tools.service
+100% 1607 - systemd/system-generators/systemd-gpt-auto-generator                                                                ERROR: Dangerous link path was ignored : systemd/system-generators/systemd-gpt-auto-generator : /dev/null
+100% 1608 - systemd/system.conf                               ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/dirmngr.socket : /usr/lib/systemd/user/dirmngr.socket
+100% 1611 - systemd/user/sockets.target.wants/gpg-agent-browser.socket                                                                      ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/gpg-agent-browser.socket : /usr/lib/systemd/user/gpg-agent-browser.socket
+100% 1612 - systemd/user/sockets.target.wants/gpg-agent-extra.socket                                                                    ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/gpg-agent-extra.socket : /usr/lib/systemd/user/gpg-agent-extra.socket
+100% 1613 - systemd/user/sockets.target.wants/gpg-agent-ssh.socket                                                                  ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/gpg-agent-ssh.socket : /usr/lib/systemd/user/gpg-agent-ssh.socket
+100% 1614 - systemd/user/sockets.target.wants/gpg-agent.socket                                                              ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/gpg-agent.socket : /usr/lib/systemd/user/gpg-agent.socket
+100% 1615 - systemd/user/sockets.target.wants/keyboxd.socket                                                            ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/keyboxd.socket : /usr/lib/systemd/user/keyboxd.socket
+100% 1616 - systemd/user/sockets.target.wants/pk-debconf-helper.socket                                                                      ERROR: Dangerous link path was ignored : systemd/user/sockets.target.wants/pk-debconf-helper.socket : /usr/lib/systemd/user/pk-debconf-helper.socket
+100% 1617 - systemd/user/timers.target.wants/launchpadlib-cache-clean.timer                                                                           ERROR: Dangerous link path was ignored : systemd/user/timers.target.wants/launchpadlib-cache-clean.timer : /usr/lib/systemd/user/launchpadlib-cache-clean.timer
+100% 1618 - systemd/user.conf                             ERROR: Dangerous link path was ignored : update-motd.d/50-landscape-sysinfo : /usr/share/landscape/landscape-sysinfo.wrapper
+100% 1647 - update-motd.d/50-motd-news                                      ERROR: Dangerous link path was ignored : vtrgb : /etc/alternatives/vtrgb
+100% 1681 - wgetrc                  ERROR: Dangerous symbolic link path was ignored : xdg/systemd/user : ../../systemd/user
+100% 1686 - xdg/user-dirs.conf                              
+Sub items Errors: 372
+
+Archives with Errors: 1
+
+Sub items Errors: 372
+root@eltex-practice2-pg2-v12:~# diff /root/etc_backup_gzip/motd /root/etc_backup_7zip/motdroot@eltex-practice2-pg2-v12:~# diff /root/etc_backup_gzip/motd /root/etc_backup_7zip/motd
+1c1
+< Mon Oct 19 11:19:09 AM UTC 2026
+---
+> Артём Палухин
+root@eltex-practice2-pg2-v12:~# rexutit
+exit
+
+Script done on 2026-10-19 11:24:59+00:00 [COMMAND_EXIT_CODE="1"]

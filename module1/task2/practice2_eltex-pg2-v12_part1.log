@@ -1,0 +1,196 @@
+eltex-pg2-v12@eltex-2026-autumn:~$ ssh-keygen -t ed25519 -C "practice2-key"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/eltex-pg2-v12/.ssh/id_ed25519):
+Created directory '/home/eltex-pg2-v12/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/eltex-pg2-v12/.ssh/id_ed25519
+Your public key has been saved in /home/eltex-pg2-v12/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:W1/COE3ML6tNeiXCqS2/aBXm2kaXbA00xg3YZ+7xe9g practice2-key
+
+eltex-pg2-v12@eltex-2026-autumn:~$ cat ~/.ssh/*.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO1GT6+cvpkCyobIZ+K2A1fTuQXFI0fd4qR6hVnYzufB practice2-key
+eltex-pg2-v12@eltex-2026-autumn:~$ ls -ld ~/.ssh
+drwx------ 2 eltex-pg2-v12 eltex-pg2-v12 4096 Oct 19 16:36 /home/eltex-pg2-v12/.ssh
+eltex-pg2-v12@eltex-2026-autumn:~$ ls -l ~/.ssh/*.pub
+-rw-r--r-- 1 eltex-pg2-v12 eltex-pg2-v12 95 Oct 19 16:34 /home/eltex-pg2-v12/.ssh/id_ed25519.pub
+
+eltex-pg2-v12@eltex-2026-autumn:~$ ssh-copy-id root@172.16.9.212
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/eltex-pg2-v12/.ssh/id_ed25519.pub"
+The authenticity of host '172.16.9.212 (172.16.9.212)' can't be established.
+ED25519 key fingerprint is SHA256:YNVzj+RtetZfXv5XUn/CUjeEcaMD4eg3jy8EuGGIS+o.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.16.9.212's password:
+Number of key(s) added: 1
+
+root@eltex-practice2-pg2-v12:~# cat ~/.ssh/authorized_keys
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO1GT6+cvpkCyobIZ+K2A1fTuQXFI0fd4qR6hVnYzufB practice2-key
+root@eltex-practice2-pg2-v12:~# ls -ld ~/.ssh
+drwx------ 2 root root 4096 Mar 12  2025 /root/.ssh
+root@eltex-practice2-pg2-v12:~# ls -l ~/.ssh/authorized_keys
+-rw------- 1 root root 95 Oct 19 09:36 /root/.ssh/authorized_keys
+
+root@eltex-practice2-pg2-v12:~# useradd -m -s /bin/bash user1
+root@eltex-practice2-pg2-v12:~# passwd user1
+New password:
+Retype new password:
+passwd: password updated successfully
+
+root@eltex-practice2-pg2-v12:~# adduser user2
+info: Adding user `user2' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user2' (1002) ...
+info: Adding new user `user2' (1002) with group `user2 (1002)' ...
+info: Creating home directory `/home/user2' ...
+info: Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user2
+Is the information correct? [Y/n] y
+info: Adding new user `user2' to supplemental / extra groups `users' ...
+
+root@eltex-practice2-pg2-v12:~# adduser user3
+info: Adding user `user3' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user3' (1003) ...
+info: Adding new user `user3' (1003) with group `user3 (1003)' ...
+info: Creating home directory `/home/user3' ...
+info: Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user3
+Is the information correct? [Y/n] y
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+
+root@eltex-practice2-pg2-v12:~# usermod -s /usr/sbin/nologin user3
+root@eltex-practice2-pg2-v12:~# su - user3
+This account is currently not available.
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3
+user3@eltex-practice2-pg2-v12:/root$ logout
+bash: logout: not login shell: use `exit'
+user3@eltex-practice2-pg2-v12:/root$ exit
+exit
+
+root@eltex-practice2-pg2-v12:~# groupadd group123
+root@eltex-practice2-pg2-v12:~# usermod -aG group123 user1
+root@eltex-practice2-pg2-v12:~# usermod -aG group123 user2
+root@eltex-practice2-pg2-v12:~# usermod -aG group123 user3
+root@eltex-practice2-pg2-v12:~# groups user1 user2 user3
+user1 : user1 group123
+user2 : user2 users group123
+user3 : user3 users group123
+
+root@eltex-practice2-pg2-v12:~# mkdir -p /opt/share
+root@eltex-practice2-pg2-v12:~# chown :group123 /opt/share
+root@eltex-practice2-pg2-v12:~# chmod 2770 /opt/share
+root@eltex-practice2-pg2-v12:~# ls -ld /opt/share
+drwxrws--- 2 root group123 4096 Oct 19 10:00 /opt/share
+
+root@eltex-practice2-pg2-v12:~# echo "umask 0004" >> /home/user1/.bashrc
+root@eltex-practice2-pg2-v12:~# su - user1 -c "touch /opt/share/file1.txt"
+root@eltex-practice2-pg2-v12:~# su - user2 -c "touch /opt/share/file2.txt"
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3 -c "touch /opt/share/file3.txt"
+root@eltex-practice2-pg2-v12:~# ls -l /opt/share
+-rw-rw-r-- 1 user1 group123 0 Oct 19 10:08 file1.txt
+-rw-rw-r-- 1 user2 group123 0 Oct 19 10:08 file2.txt
+-rw-rw-r-- 1 user3 group123 0 Oct 19 10:09 file3.txt
+
+root@eltex-practice2-pg2-v12:~# su - user2 -c "rm /opt/share/file1.txt"
+root@eltex-practice2-pg2-v12:~# ls -l /opt/share
+-rw-rw-r-- 1 user2 group123 0 Oct 19 10:08 file2.txt
+-rw-rw-r-- 1 user3 group123 0 Oct 19 10:09 file3.txt
+
+root@eltex-practice2-pg2-v12:~# chmod +t /opt/share
+root@eltex-practice2-pg2-v12:~# ls -ld /opt/share
+drwxrws--T 2 root group123 4096 Oct 19 10:17 /opt/share
+root@eltex-practice2-pg2-v12:~# su - user1 -c "touch /opt/share/file1.txt"
+root@eltex-practice2-pg2-v12:~# su - user2 -c "touch /opt/share/file2.txt"
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3 -c "touch /opt/share/file3.txt"
+
+root@eltex-practice2-pg2-v12:~# su - user1
+user1@eltex-practice2-pg2-v12:~$ rm /opt/share/file2.txt
+rm: cannot remove '/opt/share/file2.txt': Operation not permitted
+user1@eltex-practice2-pg2-v12:~$ exit
+
+root@eltex-practice2-pg2-v12:~# su - user2
+user2@eltex-practice2-pg2-v12:~$ rm /opt/share/file3.txt
+rm: cannot remove '/opt/share/file3.txt': Operation not permitted
+user2@eltex-practice2-pg2-v12:~$ exit
+
+root@eltex-practice2-pg2-v12:~# su -s /bin/bash user3
+user3@eltex-practice2-pg2-v12:/root$ rm /opt/share/file1.txt
+rm: cannot remove '/opt/share/file1.txt': Operation not permitted
+user3@eltex-practice2-pg2-v12:/root$ exit
+
+
+root@eltex-practice2-pg2-v12:~# echo "user1 ALL=(ALL) NOPASSWD: /usr/bin/dmesg" > /etc/sudoers.d/user1_dmesg
+root@eltex-practice2-pg2-v12:~# chmod 440 /etc/sudoers.d/user1_dmesg
+root@eltex-practice2-pg2-v12:~# su - user1 -c "sudo dmesg | head -n 5"
+[    0.000000] Linux version 6.8.0-147-generic (buildd@lcy02-amd64-081) ...
+root@eltex-practice2-pg2-v12:~# echo -e '#!/bin/bash\ndmesg | head -n 5' > /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# chmod +x /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# chmod u+s /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# ls -l /usr/local/bin/mydmesg.sh
+-rwsr-xr-x 1 root root 30 Oct 19 10:28 /usr/local/bin/mydmesg.sh
+root@eltex-practice2-pg2-v12:~# su - user2 -c "/usr/local/bin/mydmesg.sh"
+dmesg: read kernel buffer failed: Operation not permitted
+#ядро игнорирует suid на bash-скриптах в целях безопасности
+
+root@eltex-practice2-pg2-v12:~# chage -M 10 user1
+root@eltex-practice2-pg2-v12:~# chage -M 10 user2
+root@eltex-practice2-pg2-v12:~# chage -M 10 user3
+root@eltex-practice2-pg2-v12:~# chage -l user1
+Last password change                                    : Oct 19, 2026
+Password expires                                        : Oct 29, 2026
+Maximum number of days between password change          : 10
+
+root@eltex-practice2-pg2-v12:~# echo 'Артём Палухин' > /etc/motd
+root@eltex-practice2-pg2-v12:~# cat /etc/motd
+Артём Палухин
+
+root@eltex-practice2-pg2-v12:~# rsync -a /etc/ /root/etc_backup/
+sent 2,415,400 bytes  received 19,283 bytes  4,869,366.00 bytes/sec
+total size is 2,332,200  speedup is 0.96
+
+root@eltex-practice2-pg2-v12:~# tar -czf /root/etc_backup.tar.gz -C /root/etc_backup .
+root@eltex-practice2-pg2-v12:~# tar -cjf /root/etc_backup.tar.bz2 -C /root/etc_backup .
+root@eltex-practice2-pg2-v12:~# apt install bzip2 p7zip-full -y
+root@eltex-practice2-pg2-v12:~# tar -cjf /root/etc_backup.tar.bz2 -C /root/etc_backup .
+root@eltex-practice2-pg2-v12:~# cd /root/etc_backup
+root@eltex-practice2-pg2-v12:~/etc_backup# 7z a -snl -mx=9 -ms=on /root/etc_backup.7z .
+Archive size: 447252 bytes (437 KiB)
+Everything is Ok
+root@eltex-practice2-pg2-v12:~/etc_backup# cd ..
+root@eltex-practice2-pg2-v12:~# ls -lh /root/etc_backup.tar.gz /root/etc_backup.tar.bz2 /root/etc_backup.7z
+-rw-r--r-- 1 root root 437K Oct 19 11:14 /root/etc_backup.7z
+-rw-r--r-- 1 root root 527K Oct 19 11:07 /root/etc_backup.tar.bz2
+-rw-r--r-- 1 root root 563K Oct 19 11:06 /root/etc_backup.tar.gz
+
+root@eltex-practice2-pg2-v12:~# echo "$(date)" > /etc/motd
+root@eltex-practice2-pg2-v12:~# rsync -a /etc/ /root/etc_backup/
+root@eltex-practice2-pg2-v12:~# rm /root/etc_backup.tar.gz
+root@eltex-practice2-pg2-v12:~# tar -czf /root/etc_backup.tar.gz -C /root/etc_backup .
+
+root@eltex-practice2-pg2-v12:~# mkdir -p /tmp/bz2_check
+root@eltex-practice2-pg2-v12:~# tar -xjf /root/etc_backup.tar.bz2 -C /tmp/bz2_check
+root@eltex-practice2-pg2-v12:~# diff -r /root/etc_backup /tmp/bz2_check
+diff -r /root/etc_backup/motd /tmp/bz2_check/motd
+1c1 
+< Mon Oct 19 11:19:09 AM UTC 2026
+---
+> Артём Палухин
+
+root@eltex-practice2-pg2-v12:~# mkdir -p /root/etc_backup_gzip
+root@eltex-practice2-pg2-v12:~# mkdir -p /root/etc_backup_7zip
+root@eltex-practice2-pg2-v12:~# tar -xzf /root/etc_backup.tar.gz -C /root/etc_backup_gzip
+root@eltex-practice2-pg2-v12:~# 7z x /root/etc_backup.7z -o/root/etc_backup_7zip
+root@eltex-practice2-pg2-v12:~# diff /root/etc_backup_gzip/motd /root/etc_backup_7zip/motd
+1c1
+< Mon Oct 19 11:19:09 AM UTC 2026
+---
+> Артём Палухин
