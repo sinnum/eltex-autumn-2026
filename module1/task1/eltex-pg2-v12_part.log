@@ -1,0 +1,255 @@
+Script started on 2026-10-15 14:02:43+07:00 [TERM="screen" TTY="/dev/pts/34" COLUMNS="110" LINES="24"]
+eltex-pg2-v12@eltex-2026-autumn:~$ screen -ls
+There is a screen on:
+	1713714.eltex-pg2-v12_part2	(10/15/2026 02:00:54 PM)	(Attached)
+1 Socket in /run/screen/S-eltex-pg2-v12.
+eltex-pg2-v12@eltex-2026-autumn:~$ ls
+ls           lsb_release  lsinitramfs  lslocks      lsmod        lspci        
+lsattr       lscpu        lsipc        lslogins     lsns         lsusb        
+lsblk        lsfd         lsirq        lsmem        lsof         
+eltex-pg2-v12@eltex-2026-autumn:~$ $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+eltex-pg2-v12@eltex-2026-autumn:~$ $HISecho $HISTFILESIZE
+2000
+eltex-pg2-v12@eltex-2026-autumn:~$ ls -d ~/.*
+/home/eltex-pg2-v12/.bash_history  /home/eltex-pg2-v12/.bashrc  /home/eltex-pg2-v12/.profile
+/home/eltex-pg2-v12/.bash_logout   /home/eltex-pg2-v12/.config  /home/eltex-pg2-v12/.viminfo
+eltex-pg2-v12@eltex-2026-autumn:~$ export HISTTIMEFORMAT="%d/%m/%Y %H:%M^%%S:%S
+eltex-pg2-v12@eltex-2026-autumn:~$ history|head
+    1  15/10/2026 14:02:43screen
+    2  15/10/2026 14:02:43screen -ls
+    3  15/10/2026 14:02:43screen -r
+    4  15/10/2026 14:02:43screen
+    5  15/10/2026 14:02:43screen -ls
+    6  15/10/2026 14:02:43screen -r 1273175.pts-54.eltex-2026-autumn 
+    7  15/10/2026 14:02:43screen -ls
+    8  15/10/2026 14:02:43screen -dr 1273175.pts-54.eltex-2026-autumn 
+    9  15/10/2026 14:02:43screen ls
+   10  15/10/2026 14:02:43screen -ls
+eltex-pg2-v12@eltex-2026-autumn:~$ screen -ls
+There is a screen on:
+	1713714.eltex-pg2-v12_part2	(10/15/2026 02:00:54 PM)	(Attached)
+1 Socket in /run/screen/S-eltex-pg2-v12.
+eltex-pg2-v12@eltex-2026-autumn:~$ screen -history|head
+    1  15/10/2026 14:02:43screen
+    2  15/10/2026 14:02:43screen -ls
+    3  15/10/2026 14:02:43screen -r
+    4  15/10/2026 14:02:43screen
+    5  15/10/2026 14:02:43screen -ls
+    6  15/10/2026 14:02:43screen -r 1273175.pts-54.eltex-2026-autumn 
+    7  15/10/2026 14:02:43screen -ls
+    8  15/10/2026 14:02:43screen -dr 1273175.pts-54.eltex-2026-autumn 
+    9  15/10/2026 14:02:43screen ls
+   10  15/10/2026 14:02:43screen -ls
+eltex-pg2-v12@eltex-2026-autumn:~$ date
+Thu Oct 15 02:12:06 PM +07 2026
+eltex-pg2-v12@eltex-2026-autumn:~$ history|tail -3
+   49  15/10/2026 14:11:33history|head
+   50  15/10/2026 14:12:06date
+   51  15/10/2026 14:12:22history|tail -3
+eltex-pg2-v12@eltex-2026-autumn:~$ tail -5 $HISTFILE
+screen -S rolek
+screen -ls
+screen
+screen -ls
+screen -S 1713086.eltex-pg2-v12_part2 -X quit
+eltex-pg2-v12@eltex-2026-autumn:~$ PROMT_COMMAND="history -a
+eltex-pg2-v12@eltex-2026-autumn:~$ pwd
+/home/eltex-pg2-v12
+eltex-pg2-v12@eltex-2026-autumn:~$ pwPROMT_COMMAND="history -tail -5 $HISTFILhistory|tail -3
+   53  15/10/2026 14:15:10PROMT_COMMAND="history -a"
+   54  15/10/2026 14:16:11pwd
+   55  15/10/2026 14:16:18history|tail -3
+eltex-pg2-v12@eltex-2026-autumn:~$ history|tail -pwPROMT_COMMAND="history -tail -5 $HISTFILE
+screen -S rolek
+screen -ls
+screen
+screen -ls
+screen -S 1713086.eltex-pg2-v12_part2 -X quit
+eltex-pg2-v12@eltex-2026-autumn:~$ tail -5 $HISTFIL"$HISTFIL"
+screen -S rolek
+screen -ls
+screen
+screen -ls
+screen -S 1713086.eltex-pg2-v12_part2 -X quit
+eltex-pg2-v12@eltex-2026-autumn:~$ tail -5 "$HISTFILE$HISTFILhistory|tail -pwPROMT_COMMAND="history -P
+eltex-pg2-v12@eltex-2026-autumn:~$ pwd
+/home/eltex-pg2-v12
+eltex-pg2-v12@eltex-2026-autumn:~$ pwPROMPT_COMMAND="history -atail -5 "$HISTFILE$HISTFILhistory|tail -3
+   58  15/10/2026 14:18:33PROMPT_COMMAND="history -a"
+   59  15/10/2026 14:18:36pwd
+   60  15/10/2026 14:18:39history|tail -3
+eltex-pg2-v12@eltex-2026-autumn:~$ history|tail -pwPROMPT_COMMAND="history -atail -5 "$HISTFILE"
+PROMPT_COMMAND="history -a"
+#1792048716
+pwd
+#1792048719
+history|tail -3
+eltex-pg2-v12@eltex-2026-autumn:~$ eltex-pg2-v12@eltex-2026-autumn:~$ eltex-pg2-v12@eltex-2026-autumn:~$ DATE=$(date +%Y-%m-%d$
+eltex-pg2-v12@eltex-2026-autumn:~$ $DATE
+bash: 2026-10-15: command not found
+eltex-pg2-v12@eltex-2026-autumn:~$ echo $DATE
+2026-10-15
+eltex-pg2-v12@eltex-2026-autumn:~$ TIME =$(date +%M:HM:%S)
+bash: TIME: command not found
+eltex-pg2-v12@eltex-2026-autumn:~$ TIME =$(date +%H:%M:%S
+eltex-pg2-v12@eltex-2026-autumn:~$ echo %TIME
+%TIME
+eltex-pg2-v12@eltex-2026-autumn:~$ echo %TIMTI%TIMTI$TI
+14:23:47
+eltex-pg2-v12@eltex-2026-autumn:~$ DATE_TIME=$("$DATE $TIME
+eltex-pg2-v12@eltex-2026-autumn:~$ echo $DATE_TIME
+2026-10-15 14:23:47
+eltex-pg2-v12@eltex-2026-autumn:~$ ls /bin /sbin | grep '[-]0-9
+addr2line
+b2sum
+base32
+base64
+bunzip2
+bzip2
+bzip2recover
+c89
+c89-gcc
+c99
+c99-gcc
+cpan5.36-x86_64-linux-gnu
+cpp-12
+diff3
+enc2xs
+gcc-12
+gcc-ar-12
+gcc-nm-12
+gcc-ranlib-12
+gcov-12
+gcov-dump-12
+gcov-tool-12
+grub-menulst2cfg
+grub-mkpasswd-pbkdf2
+grub-syslinux2cfg
+h2ph
+h2xs
+i386
+linux32
+linux64
+lto-dump-12
+md5sum
+md5sum.textutils
+pdb3
+pdb3.11
+perl5.36.0
+perl5.36-x86_64-linux-gnu
+ping4
+ping6
+pl2pm
+pod2html
+pod2man
+pod2text
+pod2usage
+py3clean
+py3compile
+py3versions
+pydoc3
+pydoc3.11
+pygettext3
+pygettext3.11
+python3
+python3.11
+sha1sum
+sha224sum
+sha256sum
+sha384sum
+sha512sum
+ssh-argv0
+systemd-id128
+traceroute6
+traceroute6.db
+x86_64
+x86_64-linux-gnu-addr2line
+x86_64-linux-gnu-ar
+x86_64-linux-gnu-as
+x86_64-linux-gnu-c++filt
+x86_64-linux-gnu-cpp
+x86_64-linux-gnu-cpp-12
+x86_64-linux-gnu-dwp
+x86_64-linux-gnu-elfedit
+x86_64-linux-gnu-gcc
+x86_64-linux-gnu-gcc-12
+x86_64-linux-gnu-gcc-ar
+x86_64-linux-gnu-gcc-ar-12
+x86_64-linux-gnu-gcc-nm
+x86_64-linux-gnu-gcc-nm-12
+x86_64-linux-gnu-gcc-ranlib
+x86_64-linux-gnu-gcc-ranlib-12
+x86_64-linux-gnu-gcov
+x86_64-linux-gnu-gcov-12
+x86_64-linux-gnu-gcov-dump
+x86_64-linux-gnu-gcov-dump-12
+x86_64-linux-gnu-gcov-tool
+x86_64-linux-gnu-gcov-tool-12
+x86_64-linux-gnu-gold
+x86_64-linux-gnu-gp-archive
+x86_64-linux-gnu-gp-collect-app
+x86_64-linux-gnu-gp-display-html
+x86_64-linux-gnu-gp-display-src
+x86_64-linux-gnu-gp-display-text
+x86_64-linux-gnu-gprof
+x86_64-linux-gnu-gprofng
+x86_64-linux-gnu-ld
+x86_64-linux-gnu-ld.bfd
+x86_64-linux-gnu-ld.gold
+x86_64-linux-gnu-lto-dump
+x86_64-linux-gnu-lto-dump-12
+x86_64-linux-gnu-nm
+x86_64-linux-gnu-objcopy
+x86_64-linux-gnu-objdump
+x86_64-linux-gnu-ranlib
+x86_64-linux-gnu-readelf
+x86_64-linux-gnu-size
+x86_64-linux-gnu-strings
+x86_64-linux-gnu-strip
+dumpe2fs
+e2freefrag
+e2fsck
+e2image
+e2label
+e2mmpstatus
+e2scrub
+e2scrub_all
+e2undo
+e4crypt
+e4defrag
+fsck.ext2
+fsck.ext3
+fsck.ext4
+killall5
+mke2fs
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+resize2fs
+tune2fs
+update-grub2
+eltex-pg2-v12@eltex-2026-autumn:~$ PS1='\u@\h-(date +%H:%M>
+eltex-pg2-v12@eltex-2026-autumn-(date +%H:%M)>PS1='\u@\h-(date +%H:%M)>$
+eltex-pg2-v12@eltex-2026-autumn-14:32>export MYPS!='\u@\h-$(date +%H:%M)\u@\h-$(date +%H:%M)>1+"="$PS1
+eltex-pg2-v12@eltex-2026-autumn-14:37>bash
+eltex-pg2-v12@eltex-2026-autumn:~$ PS1="$MYPS1 bash
+eltex-pg2-v12@eltex-2026-autumn:~$ exit
+exit
+eltex-pg2-v12@eltex-2026-autumn:~$ echo $SHLVecho $SHLVL
+4
+eltex-pg2-v12@eltex-2026-autumn:~$ exxiit
+exit
+eltex-pg2-v12@eltex-2026-autumn-14:42>echo 'if [ -n "$MYPS1" ]; then PS1="$MYPS1"; fi' >> ~/.bashrcecho 'if [ -n "$MYPS1" ]; then PS1="$MYPS1"; fi' >> ~/.bashrc
+eltex-pg2-v12@eltex-2026-autumn-14:43>bash
+eltex-pg2-v12@eltex-2026-autumn-14:44>exit
+exit
+eltex-pg2-v12@eltex-2026-autumn-14:44>mkdir ~/$(date +%Y)-{01..12
+eltex-pg2-v12@eltex-2026-autumn-14:46>ls
+2026-01  2026-04  2026-07  2026-10  eltex-pg2-v12-part.log
+2026-02  2026-05  2026-08  2026-11  report_part1.txt
+2026-03  2026-06  2026-09  2026-12
+eltex-pg2-v12@eltex-2026-autumn-14:46>учexit
+exit
+
+Script done on 2026-10-15 14:49:18+07:00 [COMMAND_EXIT_CODE="0"]
